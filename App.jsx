@@ -1,13 +1,16 @@
 import {
   SafeAreaView,
   StyleSheet,
-  Image
+  Image,
+  Button
   
 } from "react-native";
 
+import {
+  useState
+} from "react";
+
 import Game from "./components/game";
-
-
 
 const styles = StyleSheet.create(
   {
@@ -31,17 +34,29 @@ const styles = StyleSheet.create(
     image: {
       width: 200,
       height: 200,
+      marginLeft: "auto",
+      marginRight: "auto",
+      marginTop: 12
     }
   }
 )
 
 
 export default function App() {
+  const [thanus, setThanus] = useState(false);
+
   return (
     <SafeAreaView style={styles.container}>
       <Game />
-      <Image source={require("./assets/Thanus.png")}
-             style={styles.image}/>
+      
+      <Button title={thanus ? "I regret clicking on the button" : "Surprise me"}
+              onPress={() => setThanus(!thanus)}/>
+      
+      {thanus && 
+        <Image source={require("./assets/Lord_farquaad_banner.jpg")}
+               style={styles.image}/>
+      }
+      
     </SafeAreaView>
   )
 }

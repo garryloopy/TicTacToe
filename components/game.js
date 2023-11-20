@@ -6,7 +6,8 @@ import {
 } from "react-native";
 
 import {
-    useState
+    useState,
+    useEffect
 } from "react";
 
 import Board from "./board";
@@ -23,6 +24,11 @@ const starterPositions = {
     x2y2 : "",
   }
 
+const starterWins = {
+    X: 0,
+    O: 0,
+}
+
 const styles = StyleSheet.create(
     {
         center: {
@@ -35,12 +41,37 @@ export default function Game() {
     const [positions, setPositions] = useState(starterPositions);
     const [currentTurn, setCurrentTurn] = useState("X");
 
+    const [winCounter, setWinCounter] = useState(starterWins)
+
     const [winner, setWinner] = useState("");
 
+    useEffect(
+        () => {
+            setWinner(checkForWinner());
+        }, [positions]
+    )
   
     const resetBoard = () => {
+      // Set new positions to starter position
       setPositions(starterPositions)
+
+      // Set winner to nothing
       setWinner("");
+
+      // Set current turn to X
+      setCurrentTurn("X");
+    }
+
+    const handleOnPlayAgainButton = () => {
+        // Reset board;
+        resetBoard();
+
+        // Create new object to handle new winner and increment the winner score by 1
+        let newWinCounter = { ...winCounter }
+        newWinCounter[winner] = newWinCounter[winner] + 1;
+
+        // Set win counter
+        setWinCounter( newWinCounter);
     }
 
     const changeTurn = () => {
@@ -50,33 +81,39 @@ export default function Game() {
             setCurrentTurn("X");
     }
 
-    const checkForWinner = (player) => {
+    const checkForWinner = () => {
         // Check for horizontal pattern
-        if (positions.x0y0 === player && positions.x1y0 === player && positions.x1y0 === player)
-            return true;
-        if (positions.x0y1 === player && positions.x1y1 === player && positions.x1y1 === player)
-            return true;
-        if (positions.x0y2 === player && positions.x1y2 === player && positions.x1y2 === player)
-            return true;
+        if (positions.x0y0 !== "" && positions.x0y0 === positions.x1y0 && positions.x1y0 === positions.x2y0) 
+            return positions.x0y0; 
+        if (positions.x0y1 !== "" && positions.x0y1 === positions.x1y1 && positions.x1y1 === positions.x2y1)
+            return positions.x0y1;
+        if (positions.x0y2 !== "" && positions.x0y2 === positions.x1y2 && positions.x1y2 === positions.x2y2)
+            return positions.x0y2;
 
-        // Check for vertical pattern
-        if (positions.x0y0 === player && positions.x0y1 === player && positions.x0y2 === player)
-            return true;
-        if (positions.x1y0 === player && positions.x1y1 === player && positions.x1y2 === player)
-            return true;
-        if (positions.x1y0 === player && positions.x1y1 === player && positions.x1y2 === player)
-            return true;
+        //Check for vertical pattern
+        if (positions.x0y0 !== "" && positions.x0y0 === positions.x0y1 && positions.x0y1 === positions.x0y2)
+            return positions.x0y0;
+        if (positions.x1y0 !== "" && positions.x1y0 === positions.x1y1 && positions.x1y1 === positions.x1y2)
+            return positions.x1y0;
+        if (positions.x2y0 !== "" && positions.x2y0 === positions.x2y1 && positions.x2y1 === positions.x2y2)
+            return positions.x2y0;
 
         // Check for diagonal pattern
-        if (positions.x0y0 === player && positions.x1y1 === player && positions.x2y2 === player)
-            return true;
-        if (positions.x0y2 === player && positions.x1y1 === player && positions.x2y0 === player)
-            return true;
+        if (positions.x0y0 !== "" && positions.x0y0 === positions.x1y1 && positions.x1y1 === positions.x2y2)
+            return positions.x0y0;
+        if (positions.x0y2 !== "" & positions.x0y2 === positions.x1y1 && positions.x1y1 === positions.x2y0)
+            return positions.x0y2;
+
+        // No winner
+        else
+            return "";
 
     }
   
     const handleOnSquarePress = (squareId) => {
-      console.log("Clicked on ", squareId);
+      // Winner found: don't do anything
+      if (winner) return;
+
       // Current square is already occupied
       if (positions[squareId] !== "") return;
   
@@ -87,11 +124,6 @@ export default function Game() {
   
       // Set new position
       setPositions(newPositions);
-
-      if (checkForWinner(currentTurn)) {
-        setWinner(currentTurn);
-        return;
-      }
   
       // Change current turn
       changeTurn();
@@ -103,10 +135,20 @@ export default function Game() {
             <Board positions={positions}
             onSquarePress={handleOnSquarePress}/>
 
+            <View>
+                <Text  style={styles.center}>Wins:</Text>
+                <Text  style={styles.center}>X - {winCounter.X}</Text>
+                <Text  style={styles.center}>O - {winCounter.O}</Text>
+            </View>
+
             { winner &&
-                <Text>
-                    Winner is {winner}
-                </Text>
+                <View>
+                    <Text>
+                        Winner is {winner}
+                    </Text>
+                    <Button title="Play again" 
+                            onPress={handleOnPlayAgainButton}/>
+                </View>
             }
         
             { !Object.values(positions).some( (value) => value === "" ) &&
