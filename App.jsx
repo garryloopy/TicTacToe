@@ -1,7 +1,8 @@
 import {
   SafeAreaView,
   Text,
-  StyleSheet
+  StyleSheet,
+  Button
   
 } from "react-native";
 
@@ -51,6 +52,10 @@ export default function App() {
   const [positions, setPositions] = useState(starterPositions);
   const [currentTurn, setCurrentTurn] = useState("X");
 
+  const resetBoard = () => {
+    setPositions(starterPositions)
+  }
+
   const handleOnSquarePress = (squareId) => {
     // Current square is already occupied
     if (positions[squareId] !== "") return;
@@ -75,6 +80,11 @@ export default function App() {
       <Text>Current turn is {currentTurn}</Text>
       <Board positions={positions}
              onSquarePress={handleOnSquarePress}/>
+      
+      { !Object.values(positions).some( (value) => value === "" ) &&
+        <Button title="Reset"
+                onPress={resetBoard}/>
+      }
     </SafeAreaView>
   )
 }

@@ -34,7 +34,11 @@ export default function Square( {id, contents, onPress } ) {
                         
                    }
                    onPress={handleOnPress}>
-            <Text style={styles.textCenter}>{contents}</Text>
+            <Text style={
+                    styles.textCenter
+                }>
+                {contents}
+            </Text>
         </Pressable>
     )
 }
