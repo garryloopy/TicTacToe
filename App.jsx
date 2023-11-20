@@ -2,7 +2,8 @@ import {
   SafeAreaView,
   Text,
   StyleSheet,
-  Button
+  Button,
+  Image
   
 } from "react-native";
 
@@ -32,6 +33,10 @@ const styles = StyleSheet.create(
     },
     textCenter: {
       textAlign: "center"
+    },
+    image: {
+      width: 200,
+      height: 200,
     }
   }
 )
@@ -76,6 +81,7 @@ export default function App() {
   }
   return (
     <SafeAreaView style={styles.container}>
+      
       <Text>This is a board</Text>
       <Text>Current turn is {currentTurn}</Text>
       <Board positions={positions}
@@ -85,6 +91,8 @@ export default function App() {
         <Button title="Reset"
                 onPress={resetBoard}/>
       }
+      <Image source={require("./assets/Thanus.png")}
+             style={styles.image}/>
     </SafeAreaView>
   )
 }
