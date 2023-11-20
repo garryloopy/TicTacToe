@@ -1,126 +1,80 @@
-import { 
-  View,
+import {
+  SafeAreaView,
   Text,
-  StyleSheet,
-  Dimensions,
-  Button,
-  Image,
-  TextInput,
-  ScrollView,
-  FlatList,
-  Modal
+  StyleSheet
+  
 } from "react-native";
 
-import { 
-  useState 
+import Square from "./components/square";
+import Board from "./components/board";
+
+import {
+  useState
 } from "react";
 
-import MyComponent from "./components/mycomponent";
-
-const data = [];
-for (let i = 1; i < 10; i++) {
-  const item = {
-    id: i, 
-    text: `Item ${i}`
-  }
-  data.push(item);
-}
 
 const styles = StyleSheet.create(
   {
-      container : {
-        display: "flex",
-        gap: 2,
-        flex: 1,
-        justifyContent: "center"
-      },
-      text: {
-          fontSize: 18,
-          color: "blue",
-          textAlign: "center"
-      },
-      button : {
-        backgroundColor: "blue",
-        color: "white"
-      },
-      redButton: {
-        backgroundColor: "red",
-        color: "white"
-      },
-      image: {
-        width: 200,
-        height: 200
-      }
+    container: {
+      backgroundColor: "#f5f5dc"
+    },
+    board: {
+      backgroundColor: "#ffe4c4",
+      margin: 15
+    },
+    row: {
+      flexDirection: "row"
+    },
+    square: {
+      flex: 1,
+      padding: 15
+    },
+    textCenter: {
+      textAlign: "center"
+    }
   }
-);
+)
 
-const windowDimensions = Dimensions.get("window");
-const dynamicStyles = windowDimensions.width < 768 ? styles.redButton: { };
+const starterPositions = {
+  x0y0 : "",
+  x1y0 : "",
+  x2y0 : "",
+  x0y1 : "",
+  x1y1 : "",
+  x2y1 : "",
+  x0y2 : "",
+  x1y2 : "",
+  x2y2 : "",
+}
 
 export default function App() {
-  const [count, setCounter] = useState(0);
-  const [inputText, setInputText] = useState("");
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [positions, setPositions] = useState(starterPositions);
+  const [currentTurn, setCurrentTurn] = useState("X");
 
-  const renderItem = ( {item} ) => <Text>{item.text}</Text>
-  const toggleModal = () => setIsModalVisible(!isModalVisible);
+  const handleOnSquarePress = (squareId) => {
+    // Current square is already occupied
+    if (positions[squareId] !== "") return;
 
+    // Create new variable to hold current positions
+    const newPositions = { ...positions };
+    // Change the value on the pressed square
+    newPositions[squareId] = currentTurn;
+
+    // Set new position
+    setPositions(newPositions);
+
+    // Change current turn
+    if (currentTurn == "X")
+      setCurrentTurn("O");
+    else
+      setCurrentTurn("X");
+  }
   return (
-    <View style={styles.container}>
-      <View>
-        <Button title="Open modal" onPress={() => setIsModalVisible(!isModalVisible)} />
-        <Modal visible={isModalVisible}
-              animationType="slide"
-              onRequestClose={toggleModal}>
-                <View>  
-                  <Text>This is a modal!</Text>
-                  <Button title="Close modal" onPress={toggleModal}/>
-                </View>
-          
-        </Modal>
-      </View>
-
-      <View style={styles.container}>
-        <Text style={styles.text}>Increment counter</Text>
-        <Button style={{...styles.button, ...dynamicStyles}}
-                title="Increment by 1"
-                onPress={() => setCounter(count + 1)}
-                />
-        <Button style={{...styles.button, ...dynamicStyles}}
-        title="Reset"
-        onPress={() => setCounter(0)}
-        />
-        <Text style={styles.text}>{count}</Text>
-      </View>
-      
-      <View>
-        <MyComponent />
-        <TextInput value={inputText}
-                   onChangeText={(text) => setInputText(text)}
-                   placeholder="Enter text..."
-                   secureTextEntry={true}
-        />
-        <Image source={require("./images/Thanus.png")} style={styles.image} />
-      </View>
-
-      <View>
-        <Text>Scrollview</Text>
-        <ScrollView>
-          <Text>Line 1</Text>
-          <Text>Line 2</Text>
-          <Text>Line 3</Text>
-          <Text>Line 4</Text>
-        </ScrollView>
-      </View>
-
-      <View>
-        <Text>Flatlist</Text>
-        <FlatList data={data}
-                  renderItem={renderItem}
-                  keyExtractor={item => item.id}
-        />
-      </View>
-
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Text>This is a board</Text>
+      <Text>Current turn is {currentTurn}</Text>
+      <Board positions={positions}
+             onSquarePress={handleOnSquarePress}/>
+    </SafeAreaView>
   )
 }
