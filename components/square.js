@@ -20,7 +20,7 @@ const styles = StyleSheet.create(
     }
   )
 
-export default function Square( {id, contents, onPress } ) {
+export default function Square( {id, contents, onPress, debug } ) {
 
     const handleOnPress = () => {
         onPress(id);
@@ -39,6 +39,11 @@ export default function Square( {id, contents, onPress } ) {
                 }>
                 {contents}
             </Text>
+            {debug &&
+              <Text>
+                {`Position: ${id}`}
+              </Text>
+            }
         </Pressable>
     )
 }
