@@ -150,10 +150,13 @@ export default function Game() {
                             onPress={handleOnPlayAgainButton}/>
                 </View>
             }
-        
-            { !Object.values(positions).some( (value) => value === "" ) &&
-                <Button title="Reset"
+            
+            { !Object.values(positions).some( (value) => value === "" ) && !winner &&
+                <View>
+                    <Text style={styles.center}>Stalemate... </Text>
+                    <Button title="Reset"
                     onPress={resetBoard}/>
+                </View>
             }
         </View>
     )
