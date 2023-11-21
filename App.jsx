@@ -1,62 +1,46 @@
 import {
   SafeAreaView,
-  StyleSheet,
-  Image,
-  Button
-  
+  StyleSheet
 } from "react-native";
 
 import {
-  useState
-} from "react";
+  NavigationContainer,
+} from "react-navigation/native";
 
-import Game from "./components/game";
+import {
+  createNativeStackNavigator
+} from "react-navigation/native-stack";
 
 const styles = StyleSheet.create(
   {
     container: {
       backgroundColor: "#f5f5dc"
     },
-    board: {
-      backgroundColor: "#ffe4c4",
-      margin: 15
-    },
-    row: {
-      flexDirection: "row"
-    },
-    square: {
+    homeScreen: {
       flex: 1,
-      padding: 15
-    },
-    textCenter: {
-      textAlign: "center"
-    },
-    image: {
-      width: 200,
-      height: 200,
-      marginLeft: "auto",
-      marginRight: "auto",
-      marginTop: 12
+      alignItems: "center",
+      justifyContent: "center"
     }
   }
 )
 
+const HomeScreen = () => {
+  return (
+    <View>
+      <Text>Home Screen</Text>
+    </View>
+  )
+}
+
+const Stack = createNativeStackNavigator();
+
 
 export default function App() {
-  const [thanus, setThanus] = useState(false);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Game />
-      
-      <Button title={thanus ? "I regret clicking on the button" : "Surprise me"}
-              onPress={() => setThanus(!thanus)}/>
-      
-      {thanus && 
-        <Image source={require("./assets/Lord_farquaad_banner.jpg")}
-               style={styles.image}/>
-      }
-      
-    </SafeAreaView>
+    <NavigationContainer>
+      <SafeAreaView style={styles.container}>
+      </SafeAreaView>
+    </NavigationContainer>
   )
 }
