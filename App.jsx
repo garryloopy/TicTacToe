@@ -91,8 +91,6 @@ export default function App() {
         <Button title="Reset"
                 onPress={resetBoard}/>
       }
-      <Image source={require("./assets/Thanus.png")}
-             style={styles.image}/>
     </SafeAreaView>
   )
 }
