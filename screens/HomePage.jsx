@@ -1,17 +1,33 @@
 import {
     Button,
     View,
-    Text
+    Text,
+    StyleSheet
 } from "react-native";
 
-import Game from "../components/game";
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    text: {
+        fontSize: 18,
+        marginBottom: 20,
+    },
+});
 
 export default function HomePage( {navigation} ) {
     return (
-        <View>
-            <Text>
+        <View style={styles.container}>
+            <Text style={styles.text}>
                 This is the home page
             </Text>
+            <Button title="Play" 
+                    onPress={() => navigation.navigate("Game")}/>
+            <Button title="Settings"
+                    onPress={() => navigation.navigate("Settings")}/>
         </View>
     )
 }
+

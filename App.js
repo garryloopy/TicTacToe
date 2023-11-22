@@ -1,29 +1,31 @@
-import {
-  View,
-  Text
-} from "react-native";
-
 import HomePage from "./screens/HomePage";
 import SettingsPage from "./screens/SettingsPage";
-import Game from "./components/game";
+import GamePage from "./screens/GamePage";
 
 import { 
   NavigationContainer 
 } from '@react-navigation/native';
 import { 
-  createBottomTabNavigator 
-} from "@react-navigation/bottom-tabs";
+  createStackNavigator 
+} from '@react-navigation/stack';
 
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+const noHeader = {
+  headerShown: false
+};
 
 export default function App() {
 
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomePage} />
-        <Tab.Screen name="Settings" component={SettingsPage} />
-      </Tab.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomePage} />
+        <Stack.Screen name="Settings" component={SettingsPage} />
+        <Stack.Screen name="Game" 
+                      component={GamePage} 
+                      options={noHeader}/>
+      </Stack.Navigator>
     </NavigationContainer>
   )
 }
