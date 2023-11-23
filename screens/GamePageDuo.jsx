@@ -40,7 +40,7 @@ const styles = StyleSheet.create(
     }
 );
 
-export default function GamePage( {navigation} ) {
+export default function GamePageDuo( {navigation} ) {
     const [modalVisible, setModalVisible] = useState(false);
     const [modalVisible2, setModalVisible2] = useState(false);
     const [modalVisible3, setModalVisible3] = useState(false);
@@ -152,8 +152,8 @@ export default function GamePage( {navigation} ) {
             </Modal>
 
             <Text style={styles.text}>This is the game page</Text>
-            <Text style={styles.text}>Single Play</Text>
-            <Game singlePlay={true}/>
+            <Text style={styles.text}>Duo Play</Text>
+            <Game />
             <Button title="Home"
                     onPress={handleOnHomePress} />
         </View>
