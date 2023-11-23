@@ -23,8 +23,10 @@ export default function HomePage( {navigation} ) {
             <Text style={styles.text}>
                 This is the home page
             </Text>
-            <Button title="Play" 
+            <Button title="Single play" 
                     onPress={() => navigation.navigate("Game")}/>
+            <Button title="Duo play" 
+                    onPress={() => navigation.navigate("Game Duo")}/>
             <Button title="Settings"
                     onPress={() => navigation.navigate("Settings")}/>
         </View>

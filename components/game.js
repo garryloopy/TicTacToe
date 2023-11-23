@@ -37,13 +37,24 @@ const styles = StyleSheet.create(
     }
 )
 
-export default function Game() {
+export default function Game( {singlePlay} ) {
     const [positions, setPositions] = useState(starterPositions);
     const [currentTurn, setCurrentTurn] = useState("X");
 
     const [winCounter, setWinCounter] = useState(starterWins)
 
     const [winner, setWinner] = useState("");
+
+    useEffect(() => {
+        // Don't do anything if there is a winner or it's not the computer's turn or the game is already won
+        if (winner || currentTurn !== "O" || !singlePlay || checkForWinner()) return;
+    
+        const availablePositions = Object.keys(positions).filter(position => positions[position] === "");
+        const randomNum = Math.floor(Math.random() * (availablePositions.length - 1));
+        const chosenPosition = availablePositions[randomNum];
+        handleOnSquarePress(chosenPosition);
+    }, [currentTurn]);
+    
 
     useEffect(
         () => {
@@ -128,6 +139,8 @@ export default function Game() {
       // Change current turn
       changeTurn();
     }
+
+
     return (
         <View>
             <Text style={styles.center}>Current turn is {currentTurn}</Text>
@@ -136,9 +149,9 @@ export default function Game() {
             onSquarePress={handleOnSquarePress}/>
 
             <View>
-                <Text  style={styles.center}>Wins:</Text>
-                <Text  style={styles.center}>X - {winCounter.X}</Text>
-                <Text  style={styles.center}>O - {winCounter.O}</Text>
+                <Text style={styles.center}>Wins:</Text>
+                <Text style={styles.center}>X - {winCounter.X}</Text>
+                <Text style={styles.center}>O - {winCounter.O}</Text>
             </View>
 
             { winner &&
@@ -158,6 +171,7 @@ export default function Game() {
                     onPress={resetBoard}/>
                 </View>
             }
+
         </View>
     )
 }

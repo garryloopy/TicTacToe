@@ -1,6 +1,7 @@
 import HomePage from "./screens/HomePage";
 import SettingsPage from "./screens/SettingsPage";
 import GamePage from "./screens/GamePage";
+import GamePageDuo from "./screens/GamePageDuo";
 
 import { 
   NavigationContainer 
@@ -24,6 +25,9 @@ export default function App() {
         <Stack.Screen name="Settings" component={SettingsPage} />
         <Stack.Screen name="Game" 
                       component={GamePage} 
+                      options={noHeader}/>
+        <Stack.Screen name="Game Duo" 
+                      component={GamePageDuo} 
                       options={noHeader}/>
       </Stack.Navigator>
     </NavigationContainer>
