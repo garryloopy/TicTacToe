@@ -72,7 +72,7 @@ export default function GamePageDuo( {navigation} ) {
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <Text>Are you sure you want to go home?</Text>
-                        <Button title="Yes" onPress={() => setModalVisible2(true)} />
+                        <Button title="Yes" onPress={() => navigation.navigate("Home")} />
                         <Button title="No" onPress={handleCloseModal} />
                     </View>
                 </View>
