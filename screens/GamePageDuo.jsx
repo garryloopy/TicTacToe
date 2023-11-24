@@ -5,7 +5,8 @@ import {
     Button,
     Modal,
     Text,
-    StyleSheet
+    StyleSheet,
+    Pressable
 } from "react-native";
 
 import {
@@ -15,15 +16,21 @@ import {
 const styles = StyleSheet.create(
     {
         centeredView: {
-            marginTop: 50,
+            marginTop: 25,
+            marginBottom: "auto"
+        },
+        centeredViewModal: {
+            marginTop: "auto",
             marginBottom: "auto"
         },
         modalView: {
-            margin: 20,
+            marginRight: 45,
+            marginLeft: 45,
+            marginTop: "auto",
+            marginBottom: "auto",
             backgroundColor: 'white',
             borderRadius: 20,
             padding: 35,
-            alignItems: 'center',
             shadowColor: '#000',
             shadowOffset: {
               width: 0,
@@ -36,13 +43,15 @@ const styles = StyleSheet.create(
         textHeading: {
             textAlign: "center",
             marginBottom: 10,
-            fontSize: 35,
+            fontSize: 25,
             fontWeight: "bold",
             color: "green"
         },
         text: {
             textAlign: "center",
-            marginBottom: 20
+            marginBottom: 20,
+            fontSize: 15,
+            fontWeight: "bold"
         },
         buttonContainer: {
             marginRight: 80,
@@ -54,19 +63,20 @@ const styles = StyleSheet.create(
         buttonText: {
             textAlign: "center",
             color: "white",
-            
+        },
+        modalText: {
+            backgroundColor: "#32CD32",
+            paddingVertical: 10,
+            paddingLeft: "auto",
+            paddingRight: "auto",
+            borderRadius: 2
         }
         
     }
 );
 
-export default function GamePageDuo( {navigation} ) {
+export default function GamePage( {navigation} ) {
     const [modalVisible, setModalVisible] = useState(false);
-    const [modalVisible2, setModalVisible2] = useState(false);
-    const [modalVisible3, setModalVisible3] = useState(false);
-    const [modalVisible4, setModalVisible4] = useState(false);
-    const [modalVisible5, setModalVisible5] = useState(false);
-    const [modalVisible6, setModalVisible6] = useState(false);
 
     const handleOnHomePress = () => {
         setModalVisible(true);
@@ -74,7 +84,6 @@ export default function GamePageDuo( {navigation} ) {
 
     const handleCloseModal = () => {
         setModalVisible(false);
-        
     }
 
     return (
@@ -83,23 +92,38 @@ export default function GamePageDuo( {navigation} ) {
                 animationType="slide"
                 visible={modalVisible}
                 transparent={true}
-                onRequestClose={() => setModalVisible(!modalVisible)}>
-                
-                <View style={styles.centeredView}>
+                onRequestClose={() => setModalVisible(false)}>
+                <View style={styles.centeredViewModal}>
                     <View style={styles.modalView}>
-                        <Text>Are you sure you want to go home?</Text>
-                        <Button title="Yes" onPress={() => navigation.navigate("Home")} />
-                        <Button title="No" onPress={handleCloseModal} />
+                        <Text style={styles.text}>Are you sure you want to go home?</Text>
+                        <View style={{gap: 10}}>
+                            <Pressable style={ styles.modalText }
+                                       onPress={() => navigation.navigate("Home")}>
+                                <Text style={styles.buttonText}>YES</Text>
+                            </Pressable>
+
+                            <Pressable style={ styles.modalText }
+                                       onPress={handleCloseModal}>
+                                <Text style={styles.buttonText}>NO</Text>
+                            </Pressable>
+                        </View>
                     </View>
                 </View>
             </Modal>
 
             
-            <Text style={styles.textHeading}>Duo Play</Text>
-            <Game />
+            <Text style={styles.textHeading}>Single Play</Text>
+
+            <Game singlePlay={false}/>
+
             <TouchableHighlight
-                style={styles.buttonContainer}
-                onPress={() => navigation.navigate("Home")}
+                style={[
+                    styles.buttonContainer,
+                    {
+                        marginTop: 12
+                    }
+                ]}
+                onPress={handleOnHomePress}
             >
                 <Text style={styles.buttonText}>HOME</Text>
             </TouchableHighlight>

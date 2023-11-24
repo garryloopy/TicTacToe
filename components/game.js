@@ -248,7 +248,7 @@ export default function Game( {singlePlay} ) {
 
             { winner &&
                 <View>
-                    <Text style={styles.text}>
+                    <Text style={styles.center}>
                         Winner is {winner}
                     </Text>
                     <TouchableHighlight 

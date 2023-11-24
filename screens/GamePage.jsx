@@ -5,7 +5,8 @@ import {
     Button,
     Modal,
     Text,
-    StyleSheet
+    StyleSheet,
+    Pressable
 } from "react-native";
 
 import {
@@ -15,15 +16,21 @@ import {
 const styles = StyleSheet.create(
     {
         centeredView: {
-            marginTop: 50,
+            marginTop: 25,
+            marginBottom: "auto"
+        },
+        centeredViewModal: {
+            marginTop: "auto",
             marginBottom: "auto"
         },
         modalView: {
-            margin: 20,
+            marginRight: 45,
+            marginLeft: 45,
+            marginTop: "auto",
+            marginBottom: "auto",
             backgroundColor: 'white',
             borderRadius: 20,
             padding: 35,
-            alignItems: 'center',
             shadowColor: '#000',
             shadowOffset: {
               width: 0,
@@ -56,7 +63,13 @@ const styles = StyleSheet.create(
         buttonText: {
             textAlign: "center",
             color: "white",
-            
+        },
+        modalText: {
+            backgroundColor: "#32CD32",
+            paddingVertical: 10,
+            paddingLeft: "auto",
+            paddingRight: "auto",
+            borderRadius: 2
         }
         
     }
@@ -64,11 +77,6 @@ const styles = StyleSheet.create(
 
 export default function GamePage( {navigation} ) {
     const [modalVisible, setModalVisible] = useState(false);
-    const [modalVisible2, setModalVisible2] = useState(false);
-    const [modalVisible3, setModalVisible3] = useState(false);
-    const [modalVisible4, setModalVisible4] = useState(false);
-    const [modalVisible5, setModalVisible5] = useState(false);
-    const [modalVisible6, setModalVisible6] = useState(false);
 
     const handleOnHomePress = () => {
         setModalVisible(true);
@@ -76,7 +84,6 @@ export default function GamePage( {navigation} ) {
 
     const handleCloseModal = () => {
         setModalVisible(false);
-        
     }
 
     return (
@@ -85,23 +92,38 @@ export default function GamePage( {navigation} ) {
                 animationType="slide"
                 visible={modalVisible}
                 transparent={true}
-                onRequestClose={() => setModalVisible(!modalVisible)}>
-                
-                <View style={styles.centeredView}>
+                onRequestClose={() => setModalVisible(false)}>
+                <View style={styles.centeredViewModal}>
                     <View style={styles.modalView}>
-                        <Text>Are you sure you want to go home?</Text>
-                        <Button title="Yes" onPress={() => navigation.navigate("Home")} />
-                        <Button title="No" onPress={handleCloseModal} />
+                        <Text style={styles.text}>Are you sure you want to go home?</Text>
+                        <View style={{gap: 10}}>
+                            <Pressable style={ styles.modalText }
+                                       onPress={() => navigation.navigate("Home")}>
+                                <Text style={styles.buttonText}>YES</Text>
+                            </Pressable>
+
+                            <Pressable style={ styles.modalText }
+                                       onPress={handleCloseModal}>
+                                <Text style={styles.buttonText}>NO</Text>
+                            </Pressable>
+                        </View>
                     </View>
                 </View>
             </Modal>
 
             
             <Text style={styles.textHeading}>Single Play</Text>
+
             <Game singlePlay={true}/>
+
             <TouchableHighlight
-                style={styles.buttonContainer}
-                onPress={() => navigation.navigate("Home")}
+                style={[
+                    styles.buttonContainer,
+                    {
+                        marginTop: 12
+                    }
+                ]}
+                onPress={handleOnHomePress}
             >
                 <Text style={styles.buttonText}>HOME</Text>
             </TouchableHighlight>

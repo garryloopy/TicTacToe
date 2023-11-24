@@ -18,13 +18,13 @@ const styles = StyleSheet.create({
   },
 
   borderHorizontal: {
-    borderBottomWidth: 9,
+    borderBottomWidth: 10,
     borderColor: '#32CD32',
   },
   
   middleSquare: {
-    borderRightWidth: 9,
-    borderLeftWidth: 9,
+    borderRightWidth: 10,
+    borderLeftWidth: 10,
     borderColor: 'green',
   },
 });
@@ -37,7 +37,11 @@ const styles = StyleSheet.create({
  *                              X0Y0 X1Y0 X2Y0
  * @returns The game board
  */
-
+const theme = StyleSheet.create(
+  {
+    
+  }
+)
 
 export default function Board({ positions, onSquarePress }) {
   return (
