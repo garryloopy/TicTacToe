@@ -78,13 +78,17 @@ const styles = StyleSheet.create(
 )
 
 export default function Game( {singlePlay} ) {
+    // Represents positions on the board
     const [positions, setPositions] = useState(starterPositions);
+    // Represents the current turn
     const [currentTurn, setCurrentTurn] = useState("X");
 
+    // Represents various values for handling win streaks and counters
     const [winCounter, setWinCounter] = useState(starterWins);
     const [winStreakX, setWinStreakX] = useState(0);
     const [winStreakO, setWinStreakO] = useState(0);
 
+    // Represents current winner
     const [winner, setWinner] = useState("");
 
     /**
