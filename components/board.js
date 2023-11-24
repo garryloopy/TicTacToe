@@ -4,9 +4,6 @@ import {
 } from "react-native";
 
 import Square from "./square";
-import {
-    useState
-} from "react";
 
 const styles = StyleSheet.create({
   board: {

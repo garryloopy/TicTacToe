@@ -1,7 +1,6 @@
 import {
     View,
     Text,
-    Button,
     TouchableHighlight,
     StyleSheet
 } from "react-native";
@@ -88,23 +87,41 @@ export default function Game( {singlePlay} ) {
 
     const [winner, setWinner] = useState("");
 
+    /**
+     * This use effect is mainly used for single play
+     */
     useEffect(() => {
-        // Don't do anything if there is a winner or it's not the computer's turn or the game is already won
+        // Don't do anything if:
+        //  -there is a winner 
+        //  -it's not the computer's turn 
+        //  -it isn't single play
+        //  -the current board contains a possibility of a win
         if (winner || currentTurn !== "O" || !singlePlay || checkForWinner()) return;
-    
+        
+        // Gets all available positions
         const availablePositions = Object.keys(positions).filter(position => positions[position] === "");
+        // Generate a random index from the available positions
         const randomNum = Math.floor(Math.random() * (availablePositions.length - 1));
+        // Get the position from the board using the random index
         const chosenPosition = availablePositions[randomNum];
+
+        // Press a square with the random position value
         handleOnSquarePress(chosenPosition);
     }, [currentTurn]);
     
-
+    /**
+     * This useEffect is mainly used for checking the winner after every turn
+     */
     useEffect(
         () => {
+            // Sets winner if found or sets winner to nothing
             setWinner(checkForWinner());
         }, [positions]
     )
   
+    /**
+     * Resets the current board
+     */
     const resetBoard = () => {
       // Set new positions to starter position
       setPositions(starterPositions)
@@ -116,6 +133,9 @@ export default function Game( {singlePlay} ) {
       setCurrentTurn("X");
     }
 
+    /**
+     * Handler for pressing play again button
+     */
     const handleOnPlayAgainButton = () => {
         // Reset board;
         resetBoard();
@@ -127,6 +147,7 @@ export default function Game( {singlePlay} ) {
         // Set win counter
         setWinCounter( newWinCounter);
 
+        // Adds win streak to the current winner
         if (winner === "X") {
             setWinStreakX(winStreakX + 1);
             setWinStreakO(0);
@@ -136,13 +157,21 @@ export default function Game( {singlePlay} ) {
         }
     }
 
+    /**
+     * Changes current turn
+     */
     const changeTurn = () => {
+        // Change the current turn
         if (currentTurn == "X")
             setCurrentTurn("O");
         else
             setCurrentTurn("X");
     }
 
+    /**
+     * Checks for the winner based on board positions
+     * @returns "X" or "O" if a winner is found, otherwise return ""
+     */
     const checkForWinner = () => {
         // Check for horizontal pattern
         if (positions.x0y0 !== "" && positions.x0y0 === positions.x1y0 && positions.x1y0 === positions.x2y0) 
@@ -172,6 +201,10 @@ export default function Game( {singlePlay} ) {
 
     }
   
+    /**
+     * Handler for when a board square is pressed
+     * @param {String} squareId The position of the square on the board to apply the current turn into
+     */
     const handleOnSquarePress = (squareId) => {
       // Winner found: don't do anything
       if (winner) return;
