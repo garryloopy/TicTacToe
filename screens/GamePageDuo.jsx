@@ -1,6 +1,7 @@
 import Game from "../components/game"
 import {
     View,
+    TouchableHighlight,
     Button,
     Modal,
     Text,
@@ -14,7 +15,7 @@ import {
 const styles = StyleSheet.create(
     {
         centeredView: {
-            marginTop: "auto",
+            marginTop: 50,
             marginBottom: "auto"
         },
         modalView: {
@@ -32,9 +33,28 @@ const styles = StyleSheet.create(
             shadowRadius: 4,
             elevation: 5,
         },
+        textHeading: {
+            textAlign: "center",
+            marginBottom: 10,
+            fontSize: 35,
+            fontWeight: "bold",
+            color: "green"
+        },
         text: {
             textAlign: "center",
             marginBottom: 20
+        },
+        buttonContainer: {
+            marginRight: 80,
+            marginLeft: 80,
+            marginBottom: 10,
+            backgroundColor: "#32CD32",
+            padding: 10,
+        },
+        buttonText: {
+            textAlign: "center",
+            color: "white",
+            
         }
         
     }
@@ -54,11 +74,7 @@ export default function GamePageDuo( {navigation} ) {
 
     const handleCloseModal = () => {
         setModalVisible(false);
-        setModalVisible2(false);
-        setModalVisible3(false);
-        setModalVisible4(false);
-        setModalVisible5(false);
-        setModalVisible6(false);
+        
     }
 
     return (
@@ -78,84 +94,15 @@ export default function GamePageDuo( {navigation} ) {
                 </View>
             </Modal>
 
-            <Modal
-                animationType="slide"
-                visible={modalVisible2}
-                transparent={true}
-                onRequestClose={() => setModalVisible(!modalVisible)}>
-                
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text>Are you REALLY sure you want to go home?</Text>
-                        <Button title="Yes" onPress={() => setModalVisible3(true)} />
-                        <Button title="No" onPress={handleCloseModal} />
-                    </View>
-                </View>
-            </Modal>
-
-            <Modal
-                animationType="slide"
-                visible={modalVisible3}
-                transparent={true}
-                onRequestClose={() => setModalVisible(!modalVisible)}>
-                
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text>Are you REALLY REALLY sure you want to go home?</Text>
-                        <Button title="Yes" onPress={() => setModalVisible4(true)} />
-                        <Button title="No" onPress={handleCloseModal} />
-                    </View>
-                </View>
-            </Modal>
-            <Modal
-                animationType="slide"
-                visible={modalVisible4}
-                transparent={true}
-                onRequestClose={() => setModalVisible(!modalVisible)}>
-                
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text>Are you REALLY REALLY REALLY REALLY REALLY REALLY sure you want to go home?</Text>
-                        <Button title="Yes" onPress={() => setModalVisible5(true)} />
-                        <Button title="No" onPress={handleCloseModal} />
-                    </View>
-                </View>
-            </Modal>
-            <Modal
-                animationType="slide"
-                visible={modalVisible5}
-                transparent={true}
-                onRequestClose={() => setModalVisible(!modalVisible)}>
-                
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text>Are you REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY sure you want to go home?</Text>
-                        <Button title="Yes" onPress={() => setModalVisible6(true)} />
-                        <Button title="No" onPress={handleCloseModal} />
-                    </View>
-                </View>
-            </Modal>
-            <Modal
-                animationType="slide"
-                visible={modalVisible6}
-                transparent={true}
-                onRequestClose={() => setModalVisible(!modalVisible)}>
-                
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text>Are you REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY REALLY 
-                            sure you want to go home?</Text>
-                        <Button title="Yes" onPress={() => navigation.navigate("Home")} />
-                        <Button title="No" onPress={handleCloseModal} />
-                    </View>
-                </View>
-            </Modal>
-
-            <Text style={styles.text}>This is the game page</Text>
-            <Text style={styles.text}>Duo Play</Text>
+            
+            <Text style={styles.textHeading}>Duo Play</Text>
             <Game />
-            <Button title="Home"
-                    onPress={handleOnHomePress} />
+            <TouchableHighlight
+                style={styles.buttonContainer}
+                onPress={() => navigation.navigate("Home")}
+            >
+                <Text style={styles.buttonText}>HOME</Text>
+            </TouchableHighlight>
         </View>
     )
 }

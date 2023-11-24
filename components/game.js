@@ -2,6 +2,7 @@ import {
     View,
     Text,
     Button,
+    TouchableHighlight,
     StyleSheet
 } from "react-native";
 
@@ -33,7 +34,47 @@ const styles = StyleSheet.create(
     {
         center: {
             textAlign: "center"
-        }
+        },
+        text: {
+            marginLeft: 80,
+        },
+        textCurrent: {
+            fontSize: 18,
+            fontWeight: 'bold',
+            color: 'green',
+        },
+        textTurn: {
+            fontSize: 15,
+            color: 'white',
+            marginLeft: 50,
+        },
+        textWins: {
+            fontSize: 18,
+            fontWeight: 'bold',
+            color: 'green'
+        },
+        infoContainer: {
+            borderWidth: 1,
+            borderColor: 'green',
+            borderRadius: 5,
+            padding: 10,
+            marginLeft: 80,
+            marginRight: 80,
+            marginBottom: 10,
+            backgroundColor: '#32CD32' 
+        },
+        buttonContainer: {
+            marginRight: 80,
+            marginLeft: 80,
+            marginTop: 10,
+            backgroundColor: 'green',
+            color: 'white',
+        },
+        buttonText: {
+            color: 'white',
+            textAlign: 'center',
+            padding: 10,
+        },
     }
 )
 
@@ -41,7 +82,9 @@ export default function Game( {singlePlay} ) {
     const [positions, setPositions] = useState(starterPositions);
     const [currentTurn, setCurrentTurn] = useState("X");
 
-    const [winCounter, setWinCounter] = useState(starterWins)
+    const [winCounter, setWinCounter] = useState(starterWins);
+    const [winStreakX, setWinStreakX] = useState(0);
+    const [winStreakO, setWinStreakO] = useState(0);
 
     const [winner, setWinner] = useState("");
 
@@ -83,6 +126,14 @@ export default function Game( {singlePlay} ) {
 
         // Set win counter
         setWinCounter( newWinCounter);
+
+        if (winner === "X") {
+            setWinStreakX(winStreakX + 1);
+            setWinStreakO(0);
+        } else if (winner === "O") {
+            setWinStreakO(winStreakO + 1);
+            setWinStreakX(0);
+        }
     }
 
     const changeTurn = () => {
@@ -141,34 +192,46 @@ export default function Game( {singlePlay} ) {
     }
 
 
+
     return (
         <View>
-            <Text style={styles.center}>Current turn is {currentTurn}</Text>
+            <Text style={[styles.center, styles.textCurrent]}>Current turn is: {currentTurn}</Text>
 
             <Board positions={positions}
             onSquarePress={handleOnSquarePress}/>
 
-            <View>
-                <Text style={styles.center}>Wins:</Text>
-                <Text style={styles.center}>X - {winCounter.X}</Text>
-                <Text style={styles.center}>O - {winCounter.O}</Text>
+            <View style={styles.infoContainer}>
+                <Text style={[styles.textWins]}>Wins:</Text>
+                <Text style={[styles.textTurn]}>X - {winCounter.X}</Text>
+                <Text style={[styles.textTurn]}>O - {winCounter.O}</Text>
+                <Text style={[styles.textWins]}>Win Streak:</Text>
+                <Text style={[styles.textTurn]}> X - {winStreakX}</Text>
+                <Text style={[styles.textTurn]}> O - {winStreakO}</Text>
             </View>
 
             { winner &&
                 <View>
-                    <Text>
+                    <Text style={styles.text}>
                         Winner is {winner}
                     </Text>
-                    <Button title="Play again" 
-                            onPress={handleOnPlayAgainButton}/>
+                    <TouchableHighlight 
+                        style={styles.buttonContainer}
+                        onPress={handleOnPlayAgainButton} 
+                    >
+                        <Text style={styles.buttonText}>Play Again</Text>
+                    </TouchableHighlight>
                 </View>
             }
             
             { !Object.values(positions).some( (value) => value === "" ) && !winner &&
                 <View>
                     <Text style={styles.center}>Stalemate... </Text>
-                    <Button title="Reset"
-                    onPress={resetBoard}/>
+                    <TouchableHighlight
+                        style={styles.buttonContainer}
+                        onPress={resetBoard}
+                    >
+                        <Text style={styles.buttonText}>Reset</Text>
+                    </TouchableHighlight>
                 </View>
             }
 

@@ -8,8 +8,8 @@ const styles = StyleSheet.create(
   {
     square: {
       flex: 1,
-      padding: 15,
-      borderWidth: 1
+      padding: 45,
+      
     },
     occupied: {
       backgroundColor: "#f5f5dc"
@@ -20,7 +20,7 @@ const styles = StyleSheet.create(
   }
 )
 
-export default function Square( {id, contents, onPress } ) {
+export default function Square( {id, contents, onPress, style } ) {
 
   const handleOnPress = () => {
       onPress(id);
@@ -29,7 +29,8 @@ export default function Square( {id, contents, onPress } ) {
       <Pressable style={
                       ({pressed}) => [
                           pressed ? styles.occupied : "",
-                          styles.square
+                          styles.square,
+                          style
                       ]
                       
                  }
@@ -43,7 +44,7 @@ export default function Square( {id, contents, onPress } ) {
   )
 }
 // Example
-{/* <Pressable
+/* <Pressable
   onPress= {
       () => {
         setTimesPressed(current => current + 1);
@@ -61,4 +62,4 @@ export default function Square( {id, contents, onPress } ) {
       {({pressed}) => (
         <Text style={styles.text}>{pressed ? 'Pressed!' : 'Press Me'}</Text>
       )}
-</Pressable> */}
+</Pressable> */
