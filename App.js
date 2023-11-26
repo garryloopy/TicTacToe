@@ -21,8 +21,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomePage} />
-        <Stack.Screen name="Settings" component={SettingsPage} />
+        <Stack.Screen name="Home" 
+                      component={HomePage} 
+                      options={noHeader}/>
+        <Stack.Screen name="Settings" 
+                      component={SettingsPage} 
+                      options={noHeader}/>
         <Stack.Screen name="Game" 
                       component={GamePage} 
                       options={noHeader}/>
