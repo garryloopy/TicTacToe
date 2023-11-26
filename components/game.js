@@ -29,55 +29,55 @@ const starterWins = {
     O: 0,
 }
 
-const styles = StyleSheet.create(
-    {
-        center: {
-            textAlign: "center"
-        },
-        text: {
-            marginLeft: 80,
-        },
-        textCurrent: {
-            fontSize: 18,
-            fontWeight: 'bold',
-            color: 'green',
-        },
-        textTurn: {
-            fontSize: 15,
-            color: 'white',
-            marginLeft: 50,
-        },
-        textWins: {
-            fontSize: 18,
-            fontWeight: 'bold',
-            color: 'green'
-        },
-        infoContainer: {
-            borderWidth: 1,
-            borderColor: 'green',
-            borderRadius: 5,
-            padding: 10,
-            marginLeft: 80,
-            marginRight: 80,
-            marginBottom: 10,
-            backgroundColor: '#32CD32' 
-        },
-        buttonContainer: {
-            marginRight: 80,
-            marginLeft: 80,
-            marginTop: 10,
-            backgroundColor: 'green',
-            color: 'white',
-        },
-        buttonText: {
-            color: 'white',
-            textAlign: 'center',
-            padding: 10,
-        },
-    }
-)
-
-export default function Game( {singlePlay} ) {
+export default function Game( {singlePlay, theme} ) {
+    const styles = StyleSheet.create(
+        {
+            center: {
+                textAlign: "center"
+            },
+            text: {
+                marginLeft: 80,
+            },
+            textCurrent: {
+                fontSize: 18,
+                fontWeight: 'bold',
+                color: theme.textHeader.color,
+            },
+            textTurn: {
+                fontSize: 15,
+                color: theme.infoBoxSubHeader.color,
+                marginLeft: 50,
+            },
+            textWins: {
+                fontSize: 18,
+                fontWeight: 'bold',
+                color: theme.infoBoxHeader.color
+            },
+            infoContainer: {
+                borderWidth: 1,
+                borderColor: theme.infoBoxBorder.color,
+                borderRadius: 5,
+                padding: 10,
+                marginLeft: 80,
+                marginRight: 80,
+                marginBottom: 10,
+                backgroundColor: theme.infoBoxBackground.color
+            },
+            buttonContainer: {
+                marginRight: 80,
+                marginLeft: 80,
+                marginTop: 10,
+                backgroundColor: theme.buttonBackground.color,
+                color: 'white',
+            },
+            buttonText: {
+                color: theme.buttonText.color,
+                textAlign: 'center',
+                padding: 10,
+            },
+        }
+    )
+    
     // Represents positions on the board
     const [positions, setPositions] = useState(starterPositions);
     // Represents the current turn
@@ -235,7 +235,8 @@ export default function Game( {singlePlay} ) {
             <Text style={[styles.center, styles.textCurrent]}>Current turn is: {currentTurn}</Text>
 
             <Board positions={positions}
-            onSquarePress={handleOnSquarePress}/>
+                   onSquarePress={handleOnSquarePress}
+                   theme={theme}/>
 
             <View style={styles.infoContainer}>
                 <Text style={[styles.textWins]}>Wins:</Text>
