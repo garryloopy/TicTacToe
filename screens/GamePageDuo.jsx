@@ -10,81 +10,124 @@ import {
 } from "react-native";
 
 import {
-    useState
+    useState,
+    useEffect
 } from "react";
 
-const styles = StyleSheet.create(
-    {
-        centeredView: {
-            marginTop: 25,
-            marginBottom: "auto"
-        },
-        centeredViewModal: {
-            marginTop: "auto",
-            marginBottom: "auto"
-        },
-        modalView: {
-            marginRight: 45,
-            marginLeft: 45,
-            marginTop: "auto",
-            marginBottom: "auto",
-            backgroundColor: 'white',
-            borderRadius: 20,
-            padding: 35,
-            shadowColor: '#000',
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 4,
-            elevation: 5,
-        },
-        textHeading: {
-            textAlign: "center",
-            marginBottom: 10,
-            fontSize: 25,
-            fontWeight: "bold",
-            color: "green"
-        },
-        text: {
-            textAlign: "center",
-            marginBottom: 20,
-            fontSize: 15,
-            fontWeight: "bold"
-        },
-        buttonContainer: {
-            marginRight: 80,
-            marginLeft: 80,
-            marginBottom: 10,
-            backgroundColor: "#32CD32",
-            padding: 10,
-        },
-        buttonText: {
-            textAlign: "center",
-            color: "white",
-        },
-        modalText: {
-            backgroundColor: "#32CD32",
-            paddingVertical: 10,
-            paddingLeft: "auto",
-            paddingRight: "auto",
-            borderRadius: 2
-        }
-        
-    }
-);
+import { getThemeById } from "../components/themeManager";
+ 
 
-export default function GamePage( {navigation} ) {
+export default function GamePage( {navigation, route} ) {
+    // Used to represent which theme id is passed from the previous route/page, if none: default to id 0
+    const { themeId } = route.params || { themeId: 0 };
+
+    // Represents current theme
+    const [currentTheme, setCurrentTheme] = useState(getThemeById(themeId).theme);
+    
+    // Change current theme each the current theme id changes
+    useEffect(() => {
+      setCurrentTheme(getThemeById(themeId).theme);
+    }, [themeId]);
+
+    /**
+     * Represents styling for modal
+     */
+    const modalStyles = StyleSheet.create(
+        {
+            centeredViewModal: {
+                marginTop: "auto",
+                marginBottom: "auto"
+            },
+            modalView: {
+                marginRight: 45,
+                marginLeft: 45,
+                marginTop: "auto",
+                marginBottom: "auto",
+                backgroundColor: 'white',
+                borderRadius: 20,
+                padding: 35,
+                shadowColor: '#000',
+                shadowOffset: {
+                  width: 0,
+                  height: 2,
+                },
+                shadowOpacity: 0.25,
+                shadowRadius: 4,
+                elevation: 5,
+            },
+            modalText: {
+                backgroundColor: currentTheme.buttonBackground.color,
+                paddingVertical: 10,
+                paddingLeft: "auto",
+                paddingRight: "auto",
+                borderRadius: 2
+            },
+            modalHeading: {
+                color: currentTheme.textHeader.color,
+                textAlign: "center",
+                marginBottom: 20,
+                fontSize: 15,
+                fontWeight: "bold"
+            },
+        }
+    )
+
+    /**
+     * Represents styling for the overall page
+     */
+    const styles = StyleSheet.create(
+        {
+            textHeading: {
+                textAlign: "center",
+                marginBottom: 10,
+                fontSize: 25,
+                fontWeight: "bold",
+                color: currentTheme.textHeader.color
+            },
+            centeredView: {
+                marginTop: 25,
+                marginBottom: "auto"
+            },
+            buttonContainer: {
+                marginRight: 80,
+                marginLeft: 80,
+                marginBottom: 10,
+                backgroundColor: currentTheme.buttonBackground.color,
+                padding: 10,
+            },
+            buttonText: {
+                textAlign: "center",
+                color: currentTheme.buttonText.color,
+            },
+        }
+    );
+
+    /**
+     * State for modal visibility
+     */
     const [modalVisible, setModalVisible] = useState(false);
 
+    /**
+     * Handler for pressing home button
+     */
     const handleOnHomePress = () => {
+        // Show modal
         setModalVisible(true);
     }
 
+    /**
+     * Handler for closing modal
+     */
     const handleCloseModal = () => {
+        // Close modal
         setModalVisible(false);
     }
+
+    const navigateToHome = () => {
+        navigation.navigate("Home", { themeId: themeId });
+    }
+
+
 
     return (
         <View style={styles.centeredView}>
@@ -93,16 +136,16 @@ export default function GamePage( {navigation} ) {
                 visible={modalVisible}
                 transparent={true}
                 onRequestClose={() => setModalVisible(false)}>
-                <View style={styles.centeredViewModal}>
-                    <View style={styles.modalView}>
-                        <Text style={styles.text}>Are you sure you want to go home?</Text>
+                <View style={modalStyles.centeredViewModal}>
+                    <View style={modalStyles.modalView}>
+                        <Text style={modalStyles.modalHeading}>Are you sure you want to go home?</Text>
                         <View style={{gap: 10}}>
-                            <Pressable style={ styles.modalText }
-                                       onPress={() => navigation.navigate("Home")}>
+                            <Pressable style={ modalStyles.modalText }
+                                       onPress={navigateToHome}>
                                 <Text style={styles.buttonText}>YES</Text>
                             </Pressable>
 
-                            <Pressable style={ styles.modalText }
+                            <Pressable style={ modalStyles.modalText }
                                        onPress={handleCloseModal}>
                                 <Text style={styles.buttonText}>NO</Text>
                             </Pressable>
@@ -112,9 +155,10 @@ export default function GamePage( {navigation} ) {
             </Modal>
 
             
-            <Text style={styles.textHeading}>Single Play</Text>
+            <Text style={styles.textHeading}>Duo Play</Text>
 
-            <Game singlePlay={false}/>
+            <Game singlePlay={false}
+                  theme={currentTheme}/>
 
             <TouchableHighlight
                 style={[

@@ -5,29 +5,6 @@ import {
 
 import Square from "./square";
 
-const styles = StyleSheet.create({
-  board: {
-    marginTop: 60,
-    margin: 15,
-    flexDirection: 'column',
-    
-  },
-  row: {
-    flexDirection: 'row',
-    
-  },
-
-  borderHorizontal: {
-    borderBottomWidth: 10,
-    borderColor: '#32CD32',
-  },
-  
-  middleSquare: {
-    borderRightWidth: 10,
-    borderLeftWidth: 10,
-    borderColor: 'green',
-  },
-});
 
 /**
  * Represents the game board. 
@@ -37,13 +14,32 @@ const styles = StyleSheet.create({
  *                              X0Y0 X1Y0 X2Y0
  * @returns The game board
  */
-const theme = StyleSheet.create(
-  {
-    
-  }
-)
 
-export default function Board({ positions, onSquarePress }) {
+export default function Board({ positions, onSquarePress, theme}) {
+
+  const styles = StyleSheet.create({
+    board: {
+      marginTop: 60,
+      margin: 15,
+      flexDirection: 'column',
+      
+    },
+    row: {
+      flexDirection: 'row',
+    },
+  
+    borderHorizontal: {
+      borderBottomWidth: 10,
+      borderColor: theme.horizontalLine.color,
+    },
+    
+    middleSquare: {
+      borderRightWidth: 10,
+      borderLeftWidth: 10,
+      borderColor: theme.verticalLine.color,
+    },
+  });
+
   return (
     <View style={styles.board}>
       <View style={[styles.row, styles.borderHorizontal]}>
@@ -61,7 +57,6 @@ export default function Board({ positions, onSquarePress }) {
         <Square id={'x1y0'} contents={positions.x1y0} onPress={onSquarePress} style={styles.middleSquare}/>
         <Square id={'x2y0'} contents={positions.x2y0} onPress={onSquarePress} />
       </View>
-      
     </View>
   );
 }
