@@ -43,19 +43,19 @@ export default function Board({ positions, onSquarePress, theme}) {
   return (
     <View style={styles.board}>
       <View style={[styles.row, styles.borderHorizontal]}>
-        <Square id={'x0y2'} contents={positions.x0y2} onPress={onSquarePress}  />
-        <Square id={'x1y2'} contents={positions.x1y2} onPress={onSquarePress} style={styles.middleSquare}/>
-        <Square id={'x2y2'} contents={positions.x2y2} onPress={onSquarePress} />
+        <Square id={'x0y2'} contents={positions.x0y2} onPress={onSquarePress} currentTheme={theme}/>
+        <Square id={'x1y2'} contents={positions.x1y2} onPress={onSquarePress} style={styles.middleSquare} currentTheme={theme}/>
+        <Square id={'x2y2'} contents={positions.x2y2} onPress={onSquarePress} currentTheme={theme}/>
       </View>
       <View style={[styles.row, styles.borderHorizontal]}>
-        <Square id={'x0y1'} contents={positions.x0y1} onPress={onSquarePress} />
-        <Square id={'x1y1'} contents={positions.x1y1} onPress={onSquarePress} style={styles.middleSquare}  />
-        <Square id={'x2y1'} contents={positions.x2y1} onPress={onSquarePress} />
+        <Square id={'x0y1'} contents={positions.x0y1} onPress={onSquarePress} currentTheme={theme}/>
+        <Square id={'x1y1'} contents={positions.x1y1} onPress={onSquarePress} style={styles.middleSquare} currentTheme={theme} />
+        <Square id={'x2y1'} contents={positions.x2y1} onPress={onSquarePress} currentTheme={theme}/>
       </View>
       <View style={[styles.row]}>
-        <Square id={'x0y0'} contents={positions.x0y0} onPress={onSquarePress} />
-        <Square id={'x1y0'} contents={positions.x1y0} onPress={onSquarePress} style={styles.middleSquare}/>
-        <Square id={'x2y0'} contents={positions.x2y0} onPress={onSquarePress} />
+        <Square id={'x0y0'} contents={positions.x0y0} onPress={onSquarePress} currentTheme={theme}/>
+        <Square id={'x1y0'} contents={positions.x1y0} onPress={onSquarePress} style={styles.middleSquare} currentTheme={theme}/>
+        <Square id={'x2y0'} contents={positions.x2y0} onPress={onSquarePress} currentTheme={theme}/>
       </View>
     </View>
   );

@@ -4,23 +4,24 @@ import {
   StyleSheet
 } from "react-native";
 
-const styles = StyleSheet.create(
-  {
-    square: {
-      flex: 1,
-      padding: 45,
-      
-    },
-    occupied: {
-      backgroundColor: "#f5f5dc"
-    },
-    textCenter: {
-      textAlign: "center"
+export default function Square( {id, contents, onPress, style, currentTheme } ) {
+  const styles = StyleSheet.create(
+    {
+      square: {
+        flex: 1,
+        padding: 45,
+      },
+      squarePressed: {
+        backgroundColor: currentTheme.squarePressed.color
+      },
+      occupied: {
+        textAlign: "center",
+        fontWeight: "800",
+        fontSize: 15,
+        color: currentTheme.squareOccupied.color
+      }
     }
-  }
-)
-
-export default function Square( {id, contents, onPress, style } ) {
+  )
 
   const handleOnPress = () => {
       onPress(id);
@@ -28,7 +29,7 @@ export default function Square( {id, contents, onPress, style } ) {
   return (
       <Pressable style={
                       ({pressed}) => [
-                          pressed ? styles.occupied : "",
+                          pressed ? styles.squarePressed : "",
                           styles.square,
                           style
                       ]
@@ -36,30 +37,10 @@ export default function Square( {id, contents, onPress, style } ) {
                  }
                  onPress={handleOnPress}>
           <Text style={
-                  styles.textCenter
+                  styles.occupied
               }>
               {contents}
           </Text>
       </Pressable>
   )
 }
-// Example
-/* <Pressable
-  onPress= {
-      () => {
-        setTimesPressed(current => current + 1);
-      }
-  }
-
-  style={
-      ({pressed}) => [
-        {
-          backgroundColor: pressed ? 'rgb(210, 230, 255)' : 'white',
-        },
-        styles.wrapperCustom,
-        ]
-      }>
-      {({pressed}) => (
-        <Text style={styles.text}>{pressed ? 'Pressed!' : 'Press Me'}</Text>
-      )}
-</Pressable> */

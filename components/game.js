@@ -35,6 +35,11 @@ export default function Game( {singlePlay, theme} ) {
             center: {
                 textAlign: "center"
             },
+            winner: {
+                fontWeight: "500",
+                fontSize: 20,
+                color: theme.winnerText.color
+            },
             text: {
                 marginLeft: 80,
             },
@@ -249,7 +254,7 @@ export default function Game( {singlePlay, theme} ) {
 
             { winner &&
                 <View>
-                    <Text style={styles.center}>
+                    <Text style={[styles.center, styles.winner]}>
                         Winner is {winner}
                     </Text>
                     <TouchableHighlight 

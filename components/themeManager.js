@@ -47,6 +47,15 @@ const blackAndWhite = StyleSheet.create(
         buttonModalBackground: {
             color: "white"
         },
+        winnerText: {
+            color: "black"
+        },
+        squareOccupied: {
+            color: "black"
+        },
+        squarePressed: {
+            color: "#f5f5dc"
+        }
     }
 );
 // represents the inverse of the black and white theme
@@ -89,6 +98,18 @@ const inverseBlackAndWhite = StyleSheet.create(
         buttonModalBackground: {
             color: "black"
         },
+        winnerText: {
+            color: "black"
+        },
+        winnerText: {
+            color: "white"
+        },
+        squareOccupied: {
+            color: "white"
+        },
+        squarePressed: {
+            color: "grey"
+        }
     }
 );
 
@@ -101,10 +122,10 @@ const christmas = StyleSheet.create(
           color: "green"
         },  
         verticalLine: {
-          color: "red"
+          color: "green"
         },
         textHeader: {
-            color: "red"
+            color: "green"
         },
         infoBoxBackground: {
             color: "green"
@@ -125,14 +146,26 @@ const christmas = StyleSheet.create(
             color: "red"
         },
         homeHeader: {
-            color: "red"
+            color: "green"
         },
         backgroundColor: {
-            color: "white"
+            color: "red"
         },
         buttonModalBackground: {
             color: "white"
         },
+        winnerText: {
+            color: "green"
+        },
+        winnerText: {
+            color: "black"
+        },
+        squareOccupied: {
+            color: "black"
+        },
+        squarePressed: {
+            color: "#f5f5dc"
+        }
     }
 );
 
@@ -177,6 +210,15 @@ const uglyOgre = StyleSheet.create(
         buttonModalBackground: {
             color: "white"
         },
+        winnerText: {
+            color: "black"
+        },
+        squareOccupied: {
+            color: "black"
+        },
+        squarePressed: {
+            color: "#f5f5dc"
+        }
     }
 );
 // represents the Bumblebee theme
@@ -219,6 +261,18 @@ const bumblebee = StyleSheet.create(
         buttonModalBackground: {
             color: "yellow"
         },
+        winnerText: {
+            color: "black"
+        },
+        winnerText: {
+            color: "black"
+        },
+        squareOccupied: {
+            color: "black"
+        },
+        squarePressed: {
+            color: "#f5f5dc"
+        }
     }
 );
 // represents the oceanic theme
@@ -261,6 +315,18 @@ const oceanic = StyleSheet.create(
         buttonModalBackground: {
             color: "#00FFFF"
         },
+        winnerText: {
+            color: "black"
+        },
+        winnerText: {
+            color: "black"
+        },
+        squareOccupied: {
+            color: "black"
+        },
+        squarePressed: {
+            color: "#f5f5dc"
+        }
     }
 );
 // represents the royal theme
@@ -303,6 +369,18 @@ const royal = StyleSheet.create(
         buttonModalBackground: {
             color: "#800080"
         },
+        winnerText: {
+            color: "black"
+        },
+        winnerText: {
+            color: "black"
+        },
+        squareOccupied: {
+            color: "black"
+        },
+        squarePressed: {
+            color: "#f5f5dc"
+        }
 
     }
 );
@@ -347,6 +425,18 @@ const bloodMoon = StyleSheet.create(
         buttonModalBackground: {
             color: "#8B0000"
         },
+        winnerText: {
+            color: "black"
+        },
+        winnerText: {
+            color: "black"
+        },
+        squareOccupied: {
+            color: "black"
+        },
+        squarePressed: {
+            color: "#f5f5dc"
+        }
     }
 );
 // represents the noir theme
@@ -389,6 +479,18 @@ const noir = StyleSheet.create(
         buttonModalBackground: {
             color: "grey"
         },
+        winnerText: {
+            color: "black"
+        },
+        winnerText: {
+            color: "black"
+        },
+        squareOccupied: {
+            color: "black"
+        },
+        squarePressed: {
+            color: "#f5f5dc"
+        }
     }
 );
 
@@ -473,6 +575,24 @@ const themes = {
 //         color: colorValue
 //     },
 //     buttonText: {
+//         color: colorValue
+//     },
+//     homeHeader: {
+//         color: colorValue
+//     },
+//     backgroundColor: {
+//         color: colorValue
+//     },
+//     buttonModalBackground: {
+//         color: colorValue
+//     },
+//     winnerText: {
+//         color: colorValue
+//     },
+//     squareOccupied: {
+//         color: colorValue
+//     },
+//     squarePressed: {
 //         color: colorValue
 //     }
 // }
