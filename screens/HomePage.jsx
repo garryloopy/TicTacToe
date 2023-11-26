@@ -57,15 +57,15 @@ export default function HomePage( {navigation, route} ) {
      * Handler for navigating to single play mode
      */
     const navigateToGameSingle = () => {
-        // Navigate to Game page, passing in current theme
-        navigation.navigate("Game", {themeId: themeId})
+        // Navigate to Game page, passing in current theme and single play functionality
+        navigation.navigate("Game", {themeId: themeId, singlePlay: true})
     }
     /**
      * Handler for navigating to duo mode
      */
     const navigateToGameDuo = () => {
-        // Navigate to duo screen, passing in current theme
-        navigation.navigate("Game Duo", {themeId: themeId})
+        // Navigate to duo screen, passing in current theme and single play functionality
+        navigation.navigate("Game", {themeId: themeId, singlePlay: false})
     }
 
     return (

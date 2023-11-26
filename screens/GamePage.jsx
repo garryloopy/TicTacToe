@@ -18,8 +18,8 @@ import { getThemeById } from "../components/themeManager";
  
 
 export default function GamePage( {navigation, route} ) {
-    // Used to represent which theme id is passed from the previous route/page, if none: default to id 0
-    const { themeId } = route.params || { themeId: 0 };
+    // Used to represent which theme id and single play functionality is passed from the previous route/page, if none: default to id 0 and single play false
+    const { themeId, singlePlay } = route.params || { themeId: 0, singlePlay: false };
 
     // Represents current theme
     const [currentTheme, setCurrentTheme] = useState(getThemeById(themeId).theme);
@@ -85,9 +85,10 @@ export default function GamePage( {navigation, route} ) {
                 color: currentTheme.textHeader.color
             },
             centeredView: {
-                marginTop: 25,
+                paddingTop: 25,
                 marginBottom: "auto",
                 backgroundColor: currentTheme.backgroundColor.color,
+                flex: 1
             },
             buttonContainer: {
                 marginRight: 80,
@@ -158,7 +159,7 @@ export default function GamePage( {navigation, route} ) {
             
             <Text style={styles.textHeading}>Single Play</Text>
 
-            <Game singlePlay={true}
+            <Game singlePlay={singlePlay}
                   theme={currentTheme}/>
 
             <TouchableHighlight
