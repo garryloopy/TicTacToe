@@ -13,6 +13,7 @@ import {
 import { getThemeById } from "../components/themeManager";
 
 
+
 export default function HomePage( {navigation, route} ) {
     // Represents the theme id that was passed from the previous page, otherwise default to theme id of 0
     const { themeId } = route.params || { themeId: 0 };
@@ -34,11 +35,13 @@ export default function HomePage( {navigation, route} ) {
             flex: 1,
             justifyContent: "center",
             alignItems: "center",
-            fontWeight: "bold"
+            fontWeight: "bold",
+            backgroundColor: currentTheme.backgroundColor.color
         },
         header: {
             fontSize: 18,
             marginBottom: 20,
+            color: currentTheme.homeHeader.color
         },
         buttonText: {
             color: currentTheme.buttonText.color

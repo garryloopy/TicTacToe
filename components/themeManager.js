@@ -37,7 +37,58 @@ const blackAndWhite = StyleSheet.create(
         },
         buttonText: {
             color: "white"
-        }
+        },
+        homeHeader: {
+            color: "black"
+        },
+        backgroundColor: {
+            color: "white"
+        },
+        buttonModalBackground: {
+            color: "white"
+        },
+    }
+);
+// represents the inverse of the black and white theme
+
+const inverseBlackAndWhite = StyleSheet.create(
+    {
+        horizontalLine: {
+          color: "white"
+        },  
+        verticalLine: {
+          color: "white"
+        },
+        textHeader: {
+            color: "grey"
+        },
+        infoBoxBackground: {
+            color: "white"
+        },
+        infoBoxHeader: {
+            color: "black"
+        },
+        infoBoxSubHeader: {
+            color: "black"
+        },
+        infoBoxBorder: {
+            color: "grey"
+        },
+        buttonBackground: {
+            color: "white"
+        },
+        buttonText: {
+            color: "black"
+        },
+        homeHeader: {
+            color: "white"
+        },
+        backgroundColor: {
+            color: "black"
+        },
+        buttonModalBackground: {
+            color: "black"
+        },
     }
 );
 
@@ -72,7 +123,16 @@ const christmas = StyleSheet.create(
         },
         buttonText: {
             color: "red"
-        }
+        },
+        homeHeader: {
+            color: "red"
+        },
+        backgroundColor: {
+            color: "white"
+        },
+        buttonModalBackground: {
+            color: "white"
+        },
     }
 );
 
@@ -107,7 +167,16 @@ const uglyOgre = StyleSheet.create(
         },
         buttonText: {
             color: "white"
-        }
+        },
+        homeHeader: {
+            color: "green"
+        },
+        backgroundColor: {
+            color: "white"
+        },
+        buttonModalBackground: {
+            color: "white"
+        },
     }
 );
 // represents the Bumblebee theme
@@ -140,7 +209,16 @@ const bumblebee = StyleSheet.create(
         },
         buttonText: {
             color: "#FFD700"
-        }
+        },
+        homeHeader: {
+            color: "#FFD700"
+        },
+        backgroundColor: {
+            color: "yellow"
+        },
+        buttonModalBackground: {
+            color: "yellow"
+        },
     }
 );
 // represents the oceanic theme
@@ -173,7 +251,16 @@ const oceanic = StyleSheet.create(
         },
         buttonText: {
             color: "#00FFFF"
-        }
+        },
+        homeHeader: {
+            color: "#00008B"
+        },
+        backgroundColor: {
+            color: "#1E90FF"
+        },
+        buttonModalBackground: {
+            color: "#00FFFF"
+        },
     }
 );
 // represents the royal theme
@@ -206,7 +293,17 @@ const royal = StyleSheet.create(
         },
         buttonText: {
             color: "#9370DB"
-        }
+        },
+        homeHeader: {
+            color: "#4B0082"
+        },
+        backgroundColor: {
+            color: "#800080"
+        },
+        buttonModalBackground: {
+            color: "#800080"
+        },
+
     }
 );
 // represents the blood moon theme
@@ -215,13 +312,13 @@ const bloodMoon = StyleSheet.create(
 
     {
         horizontalLine: {
-          color: "#8B0000"
+          color: "#FF0000"
         },  
         verticalLine: {
-          color: "#8B0000"
+          color: "#FF0000"
         },
         textHeader: {
-            color: "#8B0000"
+            color: "#FF0000"
         },
         infoBoxBackground: {
             color: "#FF0000"
@@ -236,11 +333,62 @@ const bloodMoon = StyleSheet.create(
             color: "#FF0000"
         },
         buttonBackground: {
-            color: "#8B0000"
+            color: "#FF0000"
         },
         buttonText: {
+            color: "#8B0000"
+        },
+        homeHeader: {
             color: "#FF0000"
-        }
+        },
+        backgroundColor: {
+            color: "#8B0000"
+        },
+        buttonModalBackground: {
+            color: "#8B0000"
+        },
+    }
+);
+// represents the noir theme
+
+const noir = StyleSheet.create(
+    {
+        horizontalLine: {
+          color: "black"
+        },  
+        verticalLine: {
+          color: "white"
+        },
+        textHeader: {
+            color: "black"
+        },
+        infoBoxBackground: {
+            color: "black"
+        },
+        infoBoxHeader: {
+            color: "grey"
+        },
+        infoBoxSubHeader: {
+            color: "white"
+        },
+        infoBoxBorder: {
+            color: "white"
+        },
+        buttonBackground: {
+            color: "black"
+        },
+        buttonText: {
+            color: "white"
+        },
+        homeHeader: {
+            color: "black"
+        },
+        backgroundColor: {
+            color: "grey"
+        },
+        buttonModalBackground: {
+            color: "grey"
+        },
     }
 );
 
@@ -266,6 +414,10 @@ const themes = {
         theme: blackAndWhite,
         name: "Black and white"
     },
+    2 : {
+        theme: inverseBlackAndWhite,
+        name: "Inverse Black and white"
+    },
     3 : {
         theme: christmas,
         name: "Christmas"
@@ -285,6 +437,10 @@ const themes = {
     7 : {
         theme: bloodMoon,
         name: "Blood Moon"
+    },
+    8 : {
+        theme: noir,
+        name: "Noir"
     }
 }
 

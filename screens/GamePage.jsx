@@ -43,7 +43,7 @@ export default function GamePage( {navigation, route} ) {
                 marginLeft: 45,
                 marginTop: "auto",
                 marginBottom: "auto",
-                backgroundColor: 'white',
+                backgroundColor: currentTheme.buttonModalBackground.color,
                 borderRadius: 20,
                 padding: 35,
                 shadowColor: '#000',
@@ -86,7 +86,8 @@ export default function GamePage( {navigation, route} ) {
             },
             centeredView: {
                 marginTop: 25,
-                marginBottom: "auto"
+                marginBottom: "auto",
+                backgroundColor: currentTheme.backgroundColor.color,
             },
             buttonContainer: {
                 marginRight: 80,

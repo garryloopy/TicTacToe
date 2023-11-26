@@ -33,17 +33,19 @@ export default function GamePage( {navigation, route} ) {
      * Represents styling for modal
      */
     const modalStyles = StyleSheet.create(
-        {
+        {   
+            
             centeredViewModal: {
                 marginTop: "auto",
                 marginBottom: "auto"
+                
             },
             modalView: {
                 marginRight: 45,
                 marginLeft: 45,
                 marginTop: "auto",
                 marginBottom: "auto",
-                backgroundColor: 'white',
+                backgroundColor: currentTheme.buttonModalBackground.color,
                 borderRadius: 20,
                 padding: 35,
                 shadowColor: '#000',
@@ -82,11 +84,13 @@ export default function GamePage( {navigation, route} ) {
                 marginBottom: 10,
                 fontSize: 25,
                 fontWeight: "bold",
-                color: currentTheme.textHeader.color
+                color: currentTheme.textHeader.color,
             },
             centeredView: {
                 marginTop: 25,
-                marginBottom: "auto"
+                marginBottom: "auto",
+                backgroundColor: currentTheme.backgroundColor.color,
+                
             },
             buttonContainer: {
                 marginRight: 80,
@@ -135,7 +139,9 @@ export default function GamePage( {navigation, route} ) {
                 animationType="slide"
                 visible={modalVisible}
                 transparent={true}
-                onRequestClose={() => setModalVisible(false)}>
+                onRequestClose={() => setModalVisible(false)}
+                style={modalStyles.themeBackground}
+                >
                 <View style={modalStyles.centeredViewModal}>
                     <View style={modalStyles.modalView}>
                         <Text style={modalStyles.modalHeading}>Are you sure you want to go home?</Text>

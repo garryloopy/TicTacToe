@@ -36,7 +36,8 @@ export default function SettingsPage({ navigation, route }) {
             flex: 1,
             justifyContent: "center",
             alignItems: "center",
-            fontWeight: "bold"
+            fontWeight: "bold",
+            backgroundColor: currentTheme.backgroundColor.color
         },
         header: {
             fontSize: 18,
