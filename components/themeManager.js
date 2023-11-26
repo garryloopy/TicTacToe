@@ -110,6 +110,139 @@ const uglyOgre = StyleSheet.create(
         }
     }
 );
+// represents the Bumblebee theme
+
+const bumblebee = StyleSheet.create(
+    {
+        horizontalLine: {
+          color: "#FFD700"
+        },  
+        verticalLine: {
+          color: "black"
+        },
+        textHeader: {
+            color: "#FFD700"
+        },
+        infoBoxBackground: {
+            color: "black"
+        },
+        infoBoxHeader: {
+            color: "#FFD700"
+        },
+        infoBoxSubHeader: {
+            color: "#FFD700"
+        },
+        infoBoxBorder: {
+            color: "black"
+        },
+        buttonBackground: {
+            color: "black"
+        },
+        buttonText: {
+            color: "#FFD700"
+        }
+    }
+);
+// represents the oceanic theme
+
+const oceanic = StyleSheet.create(
+    {
+        horizontalLine: {
+          color: "#00FFFF"
+        },  
+        verticalLine: {
+          color: "#00008B"
+        },
+        textHeader: {
+            color: "#00008B"
+        },
+        infoBoxBackground: {
+            color: "#00008B"
+        },
+        infoBoxHeader: {
+            color: "#00FFFF"
+        },
+        infoBoxSubHeader: {
+            color: "white"
+        },
+        infoBoxBorder: {
+            color: "#00FFFF"
+        },
+        buttonBackground: {
+            color: "#00008B"
+        },
+        buttonText: {
+            color: "#00FFFF"
+        }
+    }
+);
+// represents the royal theme
+
+const royal = StyleSheet.create(
+    {
+        horizontalLine: {
+          color: "#4B0082"
+        },  
+        verticalLine: {
+          color: "#9370DB"
+        },
+        textHeader: {
+            color: "#4B0082"
+        },
+        infoBoxBackground: {
+            color: "#9370DB"
+        },
+        infoBoxHeader: {
+            color: "#4B0082"
+        },
+        infoBoxSubHeader: {
+            color: "#4B0082"
+        },
+        infoBoxBorder: {
+            color: "#800080"
+        },
+        buttonBackground: {
+            color: "#4B0082"
+        },
+        buttonText: {
+            color: "#9370DB"
+        }
+    }
+);
+// represents the blood moon theme
+
+const bloodMoon = StyleSheet.create(
+
+    {
+        horizontalLine: {
+          color: "#8B0000"
+        },  
+        verticalLine: {
+          color: "#8B0000"
+        },
+        textHeader: {
+            color: "#8B0000"
+        },
+        infoBoxBackground: {
+            color: "#FF0000"
+        },
+        infoBoxHeader: {
+            color: "#8B0000"
+        },
+        infoBoxSubHeader: {
+            color: "#8B0000"
+        },
+        infoBoxBorder: {
+            color: "#FF0000"
+        },
+        buttonBackground: {
+            color: "#8B0000"
+        },
+        buttonText: {
+            color: "#FF0000"
+        }
+    }
+);
 
 /**
  * Represents all the themes. 
@@ -136,8 +269,25 @@ const themes = {
     3 : {
         theme: christmas,
         name: "Christmas"
+    },
+    4 : {
+        theme: bumblebee,
+        name: "Bumblebee"
+    },
+    5 : {
+        theme: oceanic,
+        name: "Oceanic"
+    },
+    6 : {
+        theme: royal,
+        name: "Royal"
+    },
+    7 : {
+        theme: bloodMoon,
+        name: "Blood Moon"
     }
 }
+
 
 // IMPORTANT:
 // In order for themes to work, they must follow be created with a stylesheet in the following format:
