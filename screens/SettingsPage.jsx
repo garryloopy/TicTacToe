@@ -39,9 +39,9 @@ export default function SettingsPage({ navigation, route }) {
             fontWeight: "bold",
             backgroundColor: currentTheme.backgroundColor.color
         },
-        header: {
+        heading: {
             fontSize: 18,
-            marginBottom: 20,
+            marginBottom: 20
         },
         buttonText: {
             color: "white"
@@ -58,7 +58,14 @@ export default function SettingsPage({ navigation, route }) {
             backgroundColor: "gray",
             paddingVertical: 10,
             paddingHorizontal: 25
+        }, 
+        headerContainer: {
+          borderBottomWidth: 1,
+        },
+        bodyContainer: {
+
         }
+
     });
 
     /**
@@ -108,8 +115,11 @@ export default function SettingsPage({ navigation, route }) {
     
       return (
         <View style={styles.container}>
-          <Text style={styles.header}>Settings</Text>
-          <Text style={styles.header}>Themes</Text>
+          <View style={styles.headerContainer}>
+            <Text style={styles.heading}>Settings</Text>
+          </View>
+          <View>
+            <Text style={styles.heading}>Themes</Text>
           <View style={{ gap: 10 }}>
             {Object.keys(getAllThemes()).map((currentId) => (
               <ThemeButton
@@ -129,7 +139,7 @@ export default function SettingsPage({ navigation, route }) {
                 </Text>
             </Pressable>
           </View>
-
+          </View>
         </View>
       );
     }
