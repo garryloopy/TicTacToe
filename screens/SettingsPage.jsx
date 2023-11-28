@@ -34,36 +34,46 @@ export default function SettingsPage({ navigation, route }) {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
+            padding:20,
             justifyContent: "center",
             alignItems: "center",
             fontWeight: "bold",
             backgroundColor: currentTheme.backgroundColor.color
         },
         heading: {
-            fontSize: 18,
-            marginBottom: 20
-        },
+          fontSize: 18,
+          color: currentTheme.homeHeader.color,
+          textAlign: "center",
+          paddingBottom: 5
+      },
+      headerContainer: {
+          borderBottomWidth: 0.75,
+          marginBottom: 20,
+          width: "100%",
+          borderBottomColor: currentTheme.homeHeader.color
+      },
         buttonText: {
-            color: "white"
+            color: "white",
+            textAlign: "center"
         },
         buttonTextSelected: {
-            color: currentTheme.buttonText.color
+            color: currentTheme.buttonText.color,
+            textAlign: "center"
         },
         buttonContainerSelected: {
             backgroundColor: currentTheme.buttonBackground.color,
             paddingVertical: 10,
-            paddingHorizontal: 25
+            paddingHorizontal: 25,
+            borderRadius: 4
         },
         buttonContainer: {
             backgroundColor: "gray",
             paddingVertical: 10,
-            paddingHorizontal: 25
+            paddingHorizontal: 25,
+            borderRadius: 4
         }, 
-        headerContainer: {
-          borderBottomWidth: 1,
-        },
-        bodyContainer: {
-
+        themeContainer: {
+            width: "100%"
         }
 
     });
@@ -118,27 +128,30 @@ export default function SettingsPage({ navigation, route }) {
           <View style={styles.headerContainer}>
             <Text style={styles.heading}>Settings</Text>
           </View>
-          <View>
+          <View style={styles.headerContainer}>
             <Text style={styles.heading}>Themes</Text>
-          <View style={{ gap: 10 }}>
-            {Object.keys(getAllThemes()).map((currentId) => (
-              <ThemeButton
-                title={getAllThemes()[currentId].name}
-                onPress={handleOnButtonPress}
-                id={currentId}
-                key={currentId}
-                isSelected={currentId == themeId}
-              />
-            ))}
-
-            <Pressable
-                style={styles.buttonContainerSelected}
-                onPress={handleOnSaveChangesButtonPress}>
-                <Text style={styles.buttonTextSelected}>
-                Save Changes
-                </Text>
-            </Pressable>
           </View>
+          
+          <View style={styles.themeContainer}>
+            <View style={{gap: 10}}>
+              {Object.keys(getAllThemes()).map((currentId) => (
+                <ThemeButton
+                  title={getAllThemes()[currentId].name}
+                  onPress={handleOnButtonPress}
+                  id={currentId}
+                  key={currentId}
+                  isSelected={currentId == themeId}
+                />
+              ))}
+
+              <Pressable
+                  style={styles.buttonContainerSelected}
+                  onPress={handleOnSaveChangesButtonPress}>
+                  <Text style={styles.buttonTextSelected}>
+                  Save Changes
+                  </Text>
+              </Pressable>
+            </View>
           </View>
         </View>
       );

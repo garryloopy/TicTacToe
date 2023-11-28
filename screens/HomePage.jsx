@@ -33,23 +33,33 @@ export default function HomePage( {navigation, route} ) {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
+            padding: 20,
             justifyContent: "center",
             alignItems: "center",
             fontWeight: "bold",
             backgroundColor: currentTheme.backgroundColor.color
         },
-        header: {
+        heading: {
             fontSize: 18,
             marginBottom: 20,
-            color: currentTheme.homeHeader.color
+            color: currentTheme.homeHeader.color,
+            textAlign: "center",
+            paddingBottom: 5
+        },
+        headerContainer: {
+            borderBottomWidth: 0.75,
+            width: "100%",
+            borderBottomColor: currentTheme.homeHeader.color
         },
         buttonText: {
-            color: currentTheme.buttonText.color
+            color: currentTheme.buttonText.color,
+            textAlign: "center"
         },
         buttonContainer: {
             backgroundColor: currentTheme.buttonBackground.color,
             paddingVertical: 10,
-            paddingHorizontal: 25
+            paddingHorizontal: 25,
+            borderRadius: 4
         }
     });
 
@@ -70,12 +80,12 @@ export default function HomePage( {navigation, route} ) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.header}>
+            <Text style={[styles.heading, styles.headerContainer]}>
                 Welcome to TicTacToe
             </Text>
 
             <View
-                style={{gap: 10}}>
+                style={{gap: 10, width: "100%"}}>
                     <Pressable
                         style={styles.buttonContainer}
                         onPress={navigateToGameSingle}>

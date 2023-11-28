@@ -253,7 +253,8 @@ const bumblebee = StyleSheet.create(
             color: "#FFD700"
         },
         homeHeader: {
-            color: "#FFD700"
+            // color: "#FFD700"
+            color: "black"
         },
         backgroundColor: {
             color: "yellow"
