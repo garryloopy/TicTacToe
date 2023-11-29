@@ -2,7 +2,7 @@ import {
     View,
     Text,
     StyleSheet,
-    TouchableHighlight
+    TouchableHighlight,
 } from "react-native";
 
 import { useConfigContext } from "../_utils/context";

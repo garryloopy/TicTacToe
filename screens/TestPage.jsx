@@ -5,25 +5,20 @@ import {
 } from "react-native";
 
 import {
-    useState
+    useState,
+    useEffect
 } from "react";
 
 import { useConfigContext } from "../_utils/context";
 
-export default function TestPage() {
-    const [val, setVal] = useState(0);
-    const { themeId, setThemeId, soundId, setSoundId, currentTheme, setCurrentTheme } = useConfigContext();
 
-    const handlePress = () => {
-        setVal( val + 1);
-        setThemeId(val);
-    }
+export default function TestPage() {
+    const { themeId, setThemeId, soundId, setSoundId, currentTheme, setCurrentTheme } = useConfigContext();
 
     return (
         <View>
             <Text>Test page</Text>
-            <Text>{themeId}</Text>
-            <Button title="Debug" onPress={handlePress}/>
+            <Button title="Debug"/>
         </View>
     )
 }
