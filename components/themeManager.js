@@ -457,10 +457,10 @@ const noir = StyleSheet.create(
             color: "black"
         },
         infoBoxHeader: {
-            color: "grey"
+            color: "white"
         },
         infoBoxSubHeader: {
-            color: "white"
+            color: "grey"
         },
         infoBoxBorder: {
             color: "white"
@@ -521,10 +521,10 @@ const themes = {
         theme: inverseBlackAndWhite,
         name: "Inverse Black and white"
     },
-    3 : {
-        theme: christmas,
-        name: "Christmas"
-    },
+    // 3 : {
+    //     theme: christmas,
+    //     name: "Christmas"
+    // },
     4 : {
         theme: bumblebee,
         name: "Bumblebee"

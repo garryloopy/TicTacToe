@@ -1,6 +1,9 @@
 import HomePage from "./screens/HomePage";
 import SettingsPage from "./screens/SettingsPage";
 import GamePage from "./screens/GamePage";
+import TestPage from "./screens/TestPage";
+
+import { ConfigContextProvider } from "./_utils/context";
 
 import { 
   NavigationContainer 
@@ -18,18 +21,22 @@ const noHeader = {
 export default function App() {
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" 
-                      component={HomePage} 
-                      options={noHeader}/>
-        <Stack.Screen name="Settings" 
-                      component={SettingsPage} 
-                      options={noHeader}/>
-        <Stack.Screen name="Game" 
-                      component={GamePage} 
-                      options={noHeader}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+    <ConfigContextProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" 
+                        component={HomePage} 
+                        options={noHeader}/>
+          <Stack.Screen name="Settings" 
+                        component={SettingsPage} 
+                        options={noHeader}/>
+          <Stack.Screen name="Game" 
+                        component={GamePage} 
+                        options={noHeader}/>
+          <Stack.Screen name="Test Page" 
+                        component={TestPage}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ConfigContextProvider>
   )
 }

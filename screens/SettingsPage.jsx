@@ -5,6 +5,8 @@ import {
     TouchableHighlight
 } from "react-native";
 
+import { useConfigContext } from "../_utils/context";
+
 import {
     getThemeById,
     getAllThemes
@@ -15,12 +17,11 @@ import {
     useEffect
 } from "react";
 
-export default function SettingsPage({ navigation, route }) {
-    // Used to represent which theme id is passed from the previous route/page, if none: default to id 0
-    const { prevThemeId } = route.params || { prevThemeId: 0 };
+export default function SettingsPage({ navigation }) {
+    // Used to represent the state of which nav bar option is selected
+    const [selectedNavBar, setSelectedNavBar] = useState("THEMES");
 
-    // Represents current theme id
-    const [themeId, setThemeId] = useState(prevThemeId);
+    const { themeId, setThemeId, soundId, setSoundId } = useConfigContext();
 
     // Represents current theme
     const [currentTheme, setCurrentTheme] = useState(getThemeById(themeId).theme);
@@ -75,9 +76,10 @@ export default function SettingsPage({ navigation, route }) {
             backgroundColor: "gray",
             paddingVertical: 20,
             paddingHorizontal: 25,
-            borderRadius: 4
+            borderRadius: 4,
+            opacity: 0.8
         }, 
-        themeContainer: {
+        bodyContainer: {
             width: "100%"
         },
         shadow: {
@@ -101,7 +103,7 @@ export default function SettingsPage({ navigation, route }) {
      * @param {boolean} isSelected Represents a state on whether or not the current theme button is selected
      * @returns A theme button jsx
      */
-    const ThemeButton = ({ id, title, onPress, isSelected }) => {
+    const OptionsButton = ({ id, title, onPress, isSelected }) => {
 
         /**
          * Handler whenever the theme button is pressed.
@@ -139,29 +141,89 @@ export default function SettingsPage({ navigation, route }) {
         // Navigate back to the home page, passing the theme Id
         navigation.navigate("Home", { themeId: themeId });
       }
+
+      const handleOnNavButtonPress = (value) => {
+        setSelectedNavBar(value);
+      }
+
+      const navBar = StyleSheet.create(
+        {
+          navBarContainer: {
+            backgroundColor: "gray", 
+            width: "100%", 
+            height: 40, 
+            flexDirection: "row", 
+            justifyContent:"space-evenly", 
+            gap: 6, 
+            borderRadius: 4, 
+            alignItems:"center",
+          },
+            navBarButtonContainer: {
+              backgroundColor: "white", 
+              paddingVertical: 5,
+              paddingHorizontal: 60,
+              borderRadius: 4
+          },
+          navBarButtonText: {
+            textAlign: "center"
+          },
+          navBarButtonContainerSelected:{
+            backgroundColor: currentTheme.buttonBackground.color
+          },
+          navBarButtonTextSelected: {
+            color: currentTheme.buttonText.color
+          }
+        }
+      )
     
       return (
         <View style={styles.container}>
           <View style={styles.headerContainer}>
             <Text style={styles.heading}>Settings</Text>
           </View>
-          <View style={[styles.headerContainer, {borderBottomWidth: 0, marginBottom: 2}]}>
-            <Text style={styles.heading}>Themes</Text>
-          </View>
-          
-          <View style={styles.themeContainer}>
-            <View style={{gap: 10}}>
-              {Object.keys(getAllThemes()).map((currentId) => (
-                <ThemeButton
-                  title={getAllThemes()[currentId].name}
-                  onPress={handleOnButtonPress}
-                  id={currentId}
-                  key={currentId}
-                  isSelected={currentId == themeId}
-                />
-              ))}
 
-              <TouchableHighlight
+          <View style={navBar.navBarContainer}>
+            <TouchableHighlight 
+              style={[navBar.navBarButtonContainer, selectedNavBar === "THEMES" ? navBar.navBarButtonContainerSelected : {opacity: 0.7}, styles.shadow]}
+              activeOpacity={0.9}
+              underlayColor="#DDDDDD"
+              onPressOut={() => handleOnNavButtonPress("THEMES")}>
+              <Text style={[navBar.navBarButtonText, selectedNavBar === "THEMES" ? navBar.navBarButtonTextSelected : {}]}>Themes</Text>
+            </TouchableHighlight>
+            <TouchableHighlight 
+              style={[navBar.navBarButtonContainer, selectedNavBar === "SOUNDS" ? navBar.navBarButtonContainerSelected : {}, styles.shadow]}
+              activeOpacity={0.9}
+              underlayColor="#DDDDDD"
+              onPressOut={() => handleOnNavButtonPress("SOUNDS")}>
+              <Text style={[navBar.navBarButtonText, selectedNavBar === "SOUNDS" ? navBar.navBarButtonTextSelected : {opacity: 0.7}]}>Sounds</Text>
+            </TouchableHighlight>
+          </View>
+
+          <Text style={styles.heading}>{selectedNavBar === "THEMES" ? "Themes" : "Sounds"}</Text>
+
+          <View style={styles.bodyContainer}>
+
+            {selectedNavBar === "THEMES" && 
+              <View style={{gap: 10}}>
+                {Object.keys(getAllThemes()).map((currentId) => (
+                  <OptionsButton
+                    title={getAllThemes()[currentId].name}
+                    onPress={handleOnButtonPress}
+                    id={currentId}
+                    key={currentId}
+                    isSelected={currentId == themeId}
+                  />
+                ))}
+              </View>
+            }
+
+            {selectedNavBar === "SOUNDS" &&
+              <View style={{gap: 10}}>
+                <Text>Theres currently no sounds available</Text>
+              </View>
+            }
+
+            <TouchableHighlight
                   activeOpacity={0.9}
                   underlayColor="#DDDDDD"
                   style={[styles.buttonContainerSelected, {marginTop: 15}, styles.shadow]}
@@ -170,7 +232,6 @@ export default function SettingsPage({ navigation, route }) {
                   Save Changes
                   </Text>
               </TouchableHighlight>
-            </View>
           </View>
         </View>
       );

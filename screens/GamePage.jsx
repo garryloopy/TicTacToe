@@ -13,14 +13,12 @@ import {
 } from "react";
 
 import { getThemeById } from "../components/themeManager";
+
+import { useConfigContext } from "../_utils/context";
  
 
-export default function GamePage( {navigation, route} ) {
-    // Used to represent which theme id and single play functionality is passed from the previous route/page, if none: default to id 0 and single play false
-    const { themeId, singlePlay } = route.params || { themeId: 0, singlePlay: false };
-
-    // Represents current theme
-    const [currentTheme, setCurrentTheme] = useState(getThemeById(themeId).theme);
+export default function GamePage( {navigation} ) {
+    const { themeId, currentTheme, setCurrentTheme, singlePlay } = useConfigContext();
     
     // Change current theme each the current theme id changes
     useEffect(() => {
@@ -91,7 +89,7 @@ export default function GamePage( {navigation, route} ) {
             },
             headerContainer: {
                 borderBottomWidth: 0.75,
-                marginBottom: 34,
+                marginBottom: 20,
                 width: "100%",
                 borderBottomColor: currentTheme.homeHeader.color,
             },

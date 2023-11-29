@@ -50,9 +50,9 @@ export default function Game( {singlePlay, theme} ) {
             },
             textTurn: {
                 fontSize: 15,
-                fontWeight: "500",
+                fontWeight: "800",
                 color: theme.infoBoxSubHeader.color,
-                marginLeft: 50,
+                textAlign: "center",
             },
             textWins: {
                 fontSize: 20,
@@ -61,7 +61,8 @@ export default function Game( {singlePlay, theme} ) {
                 borderBottomWidth: 0.9,
                 borderColor: theme.infoBoxHeader.color,
                 paddingBottom: 1,
-                marginBottom: 5
+                marginBottom: 5,
+                textAlign: "center"
             },
             infoContainer: {
                 borderWidth: 1,
@@ -71,7 +72,7 @@ export default function Game( {singlePlay, theme} ) {
                 marginLeft: 80,
                 marginRight: 80,
                 marginBottom: 10,
-                backgroundColor: theme.infoBoxBackground.color
+                backgroundColor: theme.infoBoxBackground.color,
             },
             buttonContainer: {
                 marginRight: 80,
@@ -263,11 +264,15 @@ export default function Game( {singlePlay, theme} ) {
 
             <View style={[styles.infoContainer, styles.shadow]}>
                 <Text style={[styles.textWins]}>Wins:</Text>
-                <Text style={[styles.textTurn]}>X - {winCounter.X}</Text>
-                <Text style={[styles.textTurn]}>O - {winCounter.O}</Text>
-                <Text style={[styles.textWins]}>Win Streak:</Text>
-                <Text style={[styles.textTurn]}> X - {winStreakX}</Text>
-                <Text style={[styles.textTurn]}> O - {winStreakO}</Text>
+                <View style={{gap: 2}}>
+                    <Text style={[styles.textTurn]}>X - {winCounter.X}</Text>
+                    <Text style={[styles.textTurn]}>O - {winCounter.O}</Text>
+                </View>
+                <Text style={[styles.textWins, {marginTop: 10}]}>Win Streak:</Text>
+                <View style={{gap: 2}}>
+                    <Text style={[styles.textTurn]}> X - {winStreakX}</Text>
+                    <Text style={[styles.textTurn]}> O - {winStreakO}</Text>
+                </View>
             </View>
 
             { winner &&

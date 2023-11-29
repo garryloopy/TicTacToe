@@ -10,22 +10,11 @@ import {
     useEffect
 } from "react";
 
-import { getThemeById } from "../components/themeManager";
+import { useConfigContext } from "../_utils/context";
 
-
-
-export default function HomePage( {navigation, route} ) {
+export default function HomePage( {navigation} ) {
     // Represents the theme id that was passed from the previous page, otherwise default to theme id of 0
-    const { themeId } = route.params || { themeId: 0 };
-
-    // Represents current theme, defaulted to theme that corresponds to 0
-    const [currentTheme, setCurrentTheme] = useState(getThemeById(0).theme);
-
-    // Change theme every time the theme id changes
-    useEffect(() => {
-        // Sets current theme
-        setCurrentTheme(getThemeById(themeId).theme);
-      }, [themeId]);
+    const { themeId, currentTheme, setSinglePlay } = useConfigContext();
 
       /**
        * Represents overall styling for the page
@@ -81,14 +70,16 @@ export default function HomePage( {navigation, route} ) {
      */
     const navigateToGameSingle = () => {
         // Navigate to Game page, passing in current theme and single play functionality
-        navigation.navigate("Game", {themeId: themeId, singlePlay: true})
+        setSinglePlay(true);
+        navigation.navigate("Game")
     }
     /**
      * Handler for navigating to duo mode
      */
     const navigateToGameDuo = () => {
+        setSinglePlay(false);
         // Navigate to duo screen, passing in current theme and single play functionality
-        navigation.navigate("Game", {themeId: themeId, singlePlay: false})
+        navigation.navigate("Game")
     }
 
     return (
@@ -119,6 +110,13 @@ export default function HomePage( {navigation, route} ) {
                         style={[styles.buttonContainer, styles.shadow]}
                         onPressOut={() => navigation.navigate("Settings", {prevThemeId : themeId})}>
                         <Text style={styles.buttonText}>Settings</Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight
+                        activeOpacity={0.9}
+                        underlayColor="#DDDDDD"
+                        style={[styles.buttonContainer, styles.shadow]}
+                        onPressOut={() => navigation.navigate("Test Page")}>
+                        <Text style={styles.buttonText}>Test Page</Text>
                     </TouchableHighlight>
             </View>
         </View>
