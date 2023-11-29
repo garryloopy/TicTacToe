@@ -60,6 +60,8 @@ export default function Game( {singlePlay, theme} ) {
                 color: theme.infoBoxHeader.color,
                 borderBottomWidth: 0.9,
                 borderColor: theme.infoBoxHeader.color,
+                paddingBottom: 1,
+                marginBottom: 5
             },
             infoContainer: {
                 borderWidth: 1,
@@ -253,7 +255,7 @@ export default function Game( {singlePlay, theme} ) {
 
     return (
         <View>
-            <Text style={[styles.center, styles.textCurrent]}>Current turn is: {currentTurn}</Text>
+            <Text style={[styles.center, styles.textCurrent, styles.shadow]}>Current turn is: {currentTurn}</Text>
 
             <Board positions={positions}
                    onSquarePress={handleOnSquarePress}

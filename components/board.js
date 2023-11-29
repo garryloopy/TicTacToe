@@ -41,7 +41,7 @@ export default function Board({ positions, onSquarePress, theme}) {
   });
 
   return (
-    <View style={styles.board}>
+    <View style={[styles.board]}>
       <View style={[styles.row, styles.borderHorizontal]}>
         <Square id={'x0y2'} contents={positions.x0y2} onPress={onSquarePress} currentTheme={theme}/>
         <Square id={'x1y2'} contents={positions.x1y2} onPress={onSquarePress} style={styles.middleSquare} currentTheme={theme}/>

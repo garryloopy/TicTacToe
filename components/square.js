@@ -20,7 +20,8 @@ export default function Square( {id, contents, onPress, style, currentTheme } ) 
 
         fontWeight: "900",
         color: currentTheme.squareOccupied.color
-      }
+      },
+      
     }
   )
 

@@ -45,7 +45,7 @@ export default function SettingsPage({ navigation, route }) {
           fontWeight: "bold",
           color: currentTheme.homeHeader.color,
           textAlign: "center",
-          paddingBottom: 5
+          paddingBottom: 1
       },
       headerContainer: {
           borderBottomWidth: 0.75,

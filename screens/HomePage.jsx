@@ -45,7 +45,7 @@ export default function HomePage( {navigation, route} ) {
             marginBottom: 20,
             color: currentTheme.homeHeader.color,
             textAlign: "center",
-            paddingBottom: 5
+            paddingBottom: 1
         },
         headerContainer: {
             borderBottomWidth: 0.75,
@@ -111,7 +111,7 @@ export default function HomePage( {navigation, route} ) {
                         underlayColor="#DDDDDD"
                         style={[styles.buttonContainer, styles.shadow]}
                         onPressOut={navigateToGameDuo}>
-                        <Text style={styles.buttonText}>Duo Play</Text>
+                        <Text style={styles.buttonText}> Duo Play</Text>
                     </TouchableHighlight>
                     <TouchableHighlight
                         activeOpacity={0.9}

@@ -87,13 +87,13 @@ export default function GamePage( {navigation, route} ) {
                 fontWeight: "bold",
                 color: currentTheme.homeHeader.color,
                 textAlign: "center",
-                paddingBottom: 5
+                paddingBottom: 1
             },
             headerContainer: {
                 borderBottomWidth: 0.75,
-                marginBottom: 30,
+                marginBottom: 34,
                 width: "100%",
-                borderBottomColor: currentTheme.homeHeader.color
+                borderBottomColor: currentTheme.homeHeader.color,
             },
             centeredView: {
                 paddingTop: 25,
