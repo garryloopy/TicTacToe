@@ -19,7 +19,7 @@ export default function Board({ positions, onSquarePress, theme}) {
 
   const styles = StyleSheet.create({
     board: {
-      marginTop: 30,
+      marginTop: 10,
       marginBottom: 15,
       flexDirection: 'column',
       

@@ -49,7 +49,7 @@ export default function SettingsPage({ navigation, route }) {
       },
       headerContainer: {
           borderBottomWidth: 0.75,
-          marginBottom: 20,
+          marginBottom: 10,
           width: "100%",
           borderBottomColor: currentTheme.homeHeader.color
       },
@@ -67,18 +67,28 @@ export default function SettingsPage({ navigation, route }) {
         },
         buttonContainerSelected: {
             backgroundColor: currentTheme.buttonBackground.color,
-            paddingVertical: 10,
+            paddingVertical: 20,
             paddingHorizontal: 25,
             borderRadius: 4,
         },
         buttonContainer: {
             backgroundColor: "gray",
-            paddingVertical: 10,
+            paddingVertical: 20,
             paddingHorizontal: 25,
             borderRadius: 4
         }, 
         themeContainer: {
             width: "100%"
+        },
+        shadow: {
+            shadowColor: '#000',
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 4,
+            elevation: 5,
         }
 
     });
@@ -102,7 +112,9 @@ export default function SettingsPage({ navigation, route }) {
         };
         return (
           <TouchableHighlight
-            style={isSelected ? styles.buttonContainerSelected : styles.buttonContainer}
+            activeOpacity={0.9}
+            underlayColor="#DDDDDD"
+            style={[isSelected ? styles.buttonContainerSelected : styles.buttonContainer, styles.shadow]}
             onPress={handleOnButtonPress}>
             <Text style={isSelected ? styles.buttonTextSelected : styles.buttonText}>
               {title}
@@ -133,7 +145,7 @@ export default function SettingsPage({ navigation, route }) {
           <View style={styles.headerContainer}>
             <Text style={styles.heading}>Settings</Text>
           </View>
-          <View style={[styles.headerContainer, {borderBottomWidth: 0, marginBottom: 5}]}>
+          <View style={[styles.headerContainer, {borderBottomWidth: 0, marginBottom: 2}]}>
             <Text style={styles.heading}>Themes</Text>
           </View>
           
@@ -150,7 +162,9 @@ export default function SettingsPage({ navigation, route }) {
               ))}
 
               <TouchableHighlight
-                  style={[styles.buttonContainerSelected, {marginTop: 15}]}
+                  activeOpacity={0.9}
+                  underlayColor="#DDDDDD"
+                  style={[styles.buttonContainerSelected, {marginTop: 15}, styles.shadow]}
                   onPress={handleOnSaveChangesButtonPress}>
                   <Text style={styles.buttonTextSelected}>
                   Save Changes

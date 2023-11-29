@@ -60,7 +60,7 @@ export default function HomePage( {navigation, route} ) {
         },
         buttonContainer: {
             backgroundColor: currentTheme.buttonBackground.color,
-            paddingVertical: 10,
+            paddingVertical: 20,
             paddingHorizontal: 25,
             borderRadius: 4
         },
@@ -100,16 +100,22 @@ export default function HomePage( {navigation, route} ) {
             <View
                 style={{gap: 10, width: "100%"}}>
                     <TouchableHighlight
+                        activeOpacity={0.9}
+                        underlayColor="#DDDDDD"
                         style={[styles.buttonContainer, styles.shadow]}
                         onPressOut={navigateToGameSingle}>
                         <Text style={styles.buttonText}>Single Play</Text>
                     </TouchableHighlight>
                     <TouchableHighlight
+                        activeOpacity={0.9}
+                        underlayColor="#DDDDDD"
                         style={[styles.buttonContainer, styles.shadow]}
                         onPressOut={navigateToGameDuo}>
                         <Text style={styles.buttonText}>Duo Play</Text>
                     </TouchableHighlight>
                     <TouchableHighlight
+                        activeOpacity={0.9}
+                        underlayColor="#DDDDDD"
                         style={[styles.buttonContainer, styles.shadow]}
                         onPressOut={() => navigation.navigate("Settings", {prevThemeId : themeId})}>
                         <Text style={styles.buttonText}>Settings</Text>

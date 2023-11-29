@@ -45,7 +45,7 @@ export default function Game( {singlePlay, theme} ) {
             },
             textCurrent: {
                 fontSize: 20,
-                fontWeight: 'bold',
+                fontWeight: '700',
                 color: theme.textHeader.color,
             },
             textTurn: {
@@ -57,7 +57,9 @@ export default function Game( {singlePlay, theme} ) {
             textWins: {
                 fontSize: 20,
                 fontWeight: "800",
-                color: theme.infoBoxHeader.color
+                color: theme.infoBoxHeader.color,
+                borderBottomWidth: 0.9,
+                borderColor: theme.infoBoxHeader.color,
             },
             infoContainer: {
                 borderWidth: 1,
@@ -272,6 +274,8 @@ export default function Game( {singlePlay, theme} ) {
                         Winner is {winner}
                     </Text>
                     <TouchableHighlight 
+                        activeOpacity={0.9}
+                        underlayColor="#DDDDDD"
                         style={[styles.buttonContainer, styles.shadow]}
                         onPress={handleOnPlayAgainButton} 
                     >
@@ -284,6 +288,8 @@ export default function Game( {singlePlay, theme} ) {
                 <View>
                     <Text style={[styles.center, styles.winner]}>Stalemate... </Text>
                     <TouchableHighlight
+                        activeOpacity={0.9}
+                        underlayColor="#DDDDDD"
                         style={styles.buttonContainer}
                         onPress={resetBoard}
                     >

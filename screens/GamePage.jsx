@@ -64,8 +64,8 @@ export default function GamePage( {navigation, route} ) {
                 color: currentTheme.textHeader.color,
                 textAlign: "center",
                 marginBottom: 20,
-                fontSize: 15,
-                fontWeight: "bold"
+                fontSize: 20,
+                fontWeight: "600"
             }
         }
     )
@@ -168,11 +168,15 @@ export default function GamePage( {navigation, route} ) {
                         <Text style={modalStyles.modalHeading}>Are you sure you want to go home?</Text>
                         <View style={{gap: 10}}>
                             <TouchableHighlight style={ [modalStyles.modalText, styles.shadow] }
+                                        activeOpacity={0.9}
+                                        underlayColor="#DDDDDD"
                                        onPressOut={navigateToHome}>
                                 <Text style={styles.buttonText}>YES</Text>
                             </TouchableHighlight>
 
                             <TouchableHighlight style={ [modalStyles.modalText, styles.shadow] }
+                                        activeOpacity={0.9}
+                                        underlayColor="#DDDDDD"
                                        onPressOut={handleCloseModal}>
                                 <Text style={styles.buttonText}>NO</Text>
                             </TouchableHighlight>
@@ -190,6 +194,8 @@ export default function GamePage( {navigation, route} ) {
                   theme={currentTheme}/>
 
             <TouchableHighlight
+                activeOpacity={0.9}
+                underlayColor="#DDDDDD"
                 style={[
                     styles.buttonContainer,
                     styles.shadow,
