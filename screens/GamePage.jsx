@@ -157,7 +157,7 @@ export default function GamePage( {navigation, route} ) {
             </Modal>
 
             
-            <Text style={styles.textHeading}>Single Play</Text>
+            <Text style={styles.textHeading}>{singlePlay ? "Single Play" : "Duo Play"}</Text>
 
             <Game singlePlay={singlePlay}
                   theme={currentTheme}/>
