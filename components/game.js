@@ -44,18 +44,19 @@ export default function Game( {singlePlay, theme} ) {
                 marginLeft: 80,
             },
             textCurrent: {
-                fontSize: 18,
+                fontSize: 20,
                 fontWeight: 'bold',
                 color: theme.textHeader.color,
             },
             textTurn: {
                 fontSize: 15,
+                fontWeight: "500",
                 color: theme.infoBoxSubHeader.color,
                 marginLeft: 50,
             },
             textWins: {
-                fontSize: 18,
-                fontWeight: 'bold',
+                fontSize: 20,
+                fontWeight: "800",
                 color: theme.infoBoxHeader.color
             },
             infoContainer: {
@@ -74,12 +75,25 @@ export default function Game( {singlePlay, theme} ) {
                 marginTop: 10,
                 backgroundColor: theme.buttonBackground.color,
                 color: 'white',
+                borderRadius: 4
             },
             buttonText: {
                 color: theme.buttonText.color,
                 textAlign: 'center',
                 padding: 10,
+                fontSize: 15,
+                fontWeight: "500"
             },
+            shadow: {
+                shadowColor: '#000',
+                shadowOffset: {
+                  width: 0,
+                  height: 2,
+                },
+                shadowOpacity: 0.25,
+                shadowRadius: 4,
+                elevation: 5,
+            }
         }
     )
     
@@ -243,7 +257,7 @@ export default function Game( {singlePlay, theme} ) {
                    onSquarePress={handleOnSquarePress}
                    theme={theme}/>
 
-            <View style={styles.infoContainer}>
+            <View style={[styles.infoContainer, styles.shadow]}>
                 <Text style={[styles.textWins]}>Wins:</Text>
                 <Text style={[styles.textTurn]}>X - {winCounter.X}</Text>
                 <Text style={[styles.textTurn]}>O - {winCounter.O}</Text>
@@ -258,7 +272,7 @@ export default function Game( {singlePlay, theme} ) {
                         Winner is {winner}
                     </Text>
                     <TouchableHighlight 
-                        style={styles.buttonContainer}
+                        style={[styles.buttonContainer, styles.shadow]}
                         onPress={handleOnPlayAgainButton} 
                     >
                         <Text style={styles.buttonText}>Play Again</Text>
@@ -268,7 +282,7 @@ export default function Game( {singlePlay, theme} ) {
             
             { !Object.values(positions).some( (value) => value === "" ) && !winner &&
                 <View>
-                    <Text style={styles.center}>Stalemate... </Text>
+                    <Text style={[styles.center, styles.winner]}>Stalemate... </Text>
                     <TouchableHighlight
                         style={styles.buttonContainer}
                         onPress={resetBoard}

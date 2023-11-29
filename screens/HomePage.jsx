@@ -2,7 +2,7 @@ import {
     View,
     Text,
     StyleSheet,
-    Pressable
+    TouchableHighlight
 } from "react-native";
 
 import {
@@ -40,7 +40,8 @@ export default function HomePage( {navigation, route} ) {
             backgroundColor: currentTheme.backgroundColor.color
         },
         heading: {
-            fontSize: 18,
+            fontSize: 25,
+            fontWeight: "bold",
             marginBottom: 20,
             color: currentTheme.homeHeader.color,
             textAlign: "center",
@@ -53,13 +54,25 @@ export default function HomePage( {navigation, route} ) {
         },
         buttonText: {
             color: currentTheme.buttonText.color,
-            textAlign: "center"
+            textAlign: "center",
+            fontSize: 15,
+            fontWeight: "500"
         },
         buttonContainer: {
             backgroundColor: currentTheme.buttonBackground.color,
             paddingVertical: 10,
             paddingHorizontal: 25,
             borderRadius: 4
+        },
+        shadow: {
+            shadowColor: '#000',
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 4,
+            elevation: 5,
         }
     });
 
@@ -80,27 +93,27 @@ export default function HomePage( {navigation, route} ) {
 
     return (
         <View style={styles.container}>
-            <Text style={[styles.heading, styles.headerContainer]}>
+            <Text style={[styles.heading, styles.headerContainer, {marginBottom: 50}]}>
                 Welcome to TicTacToe
             </Text>
 
             <View
                 style={{gap: 10, width: "100%"}}>
-                    <Pressable
-                        style={styles.buttonContainer}
-                        onPress={navigateToGameSingle}>
+                    <TouchableHighlight
+                        style={[styles.buttonContainer, styles.shadow]}
+                        onPressOut={navigateToGameSingle}>
                         <Text style={styles.buttonText}>Single Play</Text>
-                    </Pressable>
-                    <Pressable
-                        style={styles.buttonContainer}
-                        onPress={navigateToGameDuo}>
+                    </TouchableHighlight>
+                    <TouchableHighlight
+                        style={[styles.buttonContainer, styles.shadow]}
+                        onPressOut={navigateToGameDuo}>
                         <Text style={styles.buttonText}>Duo Play</Text>
-                    </Pressable>
-                    <Pressable
-                        style={styles.buttonContainer}
-                        onPress={() => navigation.navigate("Settings", {prevThemeId : themeId})}>
+                    </TouchableHighlight>
+                    <TouchableHighlight
+                        style={[styles.buttonContainer, styles.shadow]}
+                        onPressOut={() => navigation.navigate("Settings", {prevThemeId : themeId})}>
                         <Text style={styles.buttonText}>Settings</Text>
-                    </Pressable>
+                    </TouchableHighlight>
             </View>
         </View>
     )

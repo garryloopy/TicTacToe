@@ -2,11 +2,9 @@ import Game from "../components/game"
 import {
     View,
     TouchableHighlight,
-    Button,
     Modal,
     Text,
     StyleSheet,
-    Pressable
 } from "react-native";
 
 import {
@@ -60,7 +58,7 @@ export default function GamePage( {navigation, route} ) {
                 paddingVertical: 10,
                 paddingLeft: "auto",
                 paddingRight: "auto",
-                borderRadius: 2
+                borderRadius: 4
             },
             modalHeading: {
                 color: currentTheme.textHeader.color,
@@ -68,7 +66,7 @@ export default function GamePage( {navigation, route} ) {
                 marginBottom: 20,
                 fontSize: 15,
                 fontWeight: "bold"
-            },
+            }
         }
     )
 
@@ -84,8 +82,22 @@ export default function GamePage( {navigation, route} ) {
                 fontWeight: "bold",
                 color: currentTheme.textHeader.color
             },
+            heading: {
+                fontSize: 25,
+                fontWeight: "bold",
+                color: currentTheme.homeHeader.color,
+                textAlign: "center",
+                paddingBottom: 5
+            },
+            headerContainer: {
+                borderBottomWidth: 0.75,
+                marginBottom: 30,
+                width: "100%",
+                borderBottomColor: currentTheme.homeHeader.color
+            },
             centeredView: {
                 paddingTop: 25,
+                paddingHorizontal: 20,
                 marginBottom: "auto",
                 backgroundColor: currentTheme.backgroundColor.color,
                 flex: 1
@@ -96,11 +108,24 @@ export default function GamePage( {navigation, route} ) {
                 marginBottom: 10,
                 backgroundColor: currentTheme.buttonBackground.color,
                 padding: 10,
+                borderRadius: 4
             },
             buttonText: {
                 textAlign: "center",
                 color: currentTheme.buttonText.color,
+                fontSize: 15,
+                fontWeight: "500"
             },
+            shadow: {
+                shadowColor: '#000',
+                shadowOffset: {
+                  width: 0,
+                  height: 2,
+                },
+                shadowOpacity: 0.25,
+                shadowRadius: 4,
+                elevation: 5,
+            }
         }
     );
 
@@ -142,22 +167,24 @@ export default function GamePage( {navigation, route} ) {
                     <View style={modalStyles.modalView}>
                         <Text style={modalStyles.modalHeading}>Are you sure you want to go home?</Text>
                         <View style={{gap: 10}}>
-                            <Pressable style={ modalStyles.modalText }
-                                       onPress={navigateToHome}>
+                            <TouchableHighlight style={ [modalStyles.modalText, styles.shadow] }
+                                       onPressOut={navigateToHome}>
                                 <Text style={styles.buttonText}>YES</Text>
-                            </Pressable>
+                            </TouchableHighlight>
 
-                            <Pressable style={ modalStyles.modalText }
-                                       onPress={handleCloseModal}>
+                            <TouchableHighlight style={ [modalStyles.modalText, styles.shadow] }
+                                       onPressOut={handleCloseModal}>
                                 <Text style={styles.buttonText}>NO</Text>
-                            </Pressable>
+                            </TouchableHighlight>
                         </View>
                     </View>
                 </View>
             </Modal>
 
             
-            <Text style={styles.textHeading}>{singlePlay ? "Single Play" : "Duo Play"}</Text>
+            <View style={styles.headerContainer}>
+                <Text style={styles.heading}>{singlePlay ? "Single Play" : "Duo Play"}</Text>
+            </View>
 
             <Game singlePlay={singlePlay}
                   theme={currentTheme}/>
@@ -165,11 +192,12 @@ export default function GamePage( {navigation, route} ) {
             <TouchableHighlight
                 style={[
                     styles.buttonContainer,
+                    styles.shadow,
                     {
-                        marginTop: 12
+                        marginTop: 12,
                     }
                 ]}
-                onPress={handleOnHomePress}
+                onPressOut={handleOnHomePress}
             >
                 <Text style={styles.buttonText}>HOME</Text>
             </TouchableHighlight>

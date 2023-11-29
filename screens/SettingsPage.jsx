@@ -2,7 +2,7 @@ import {
     View,
     Text,
     StyleSheet,
-    Pressable
+    TouchableHighlight
 } from "react-native";
 
 import {
@@ -41,7 +41,8 @@ export default function SettingsPage({ navigation, route }) {
             backgroundColor: currentTheme.backgroundColor.color
         },
         heading: {
-          fontSize: 18,
+          fontSize: 25,
+          fontWeight: "bold",
           color: currentTheme.homeHeader.color,
           textAlign: "center",
           paddingBottom: 5
@@ -54,17 +55,21 @@ export default function SettingsPage({ navigation, route }) {
       },
         buttonText: {
             color: "white",
-            textAlign: "center"
+            textAlign: "center",
+            fontSize: 15,
+            fontWeight: "500"
         },
         buttonTextSelected: {
             color: currentTheme.buttonText.color,
-            textAlign: "center"
+            textAlign: "center",
+            fontSize: 15,
+            fontWeight: "500"
         },
         buttonContainerSelected: {
             backgroundColor: currentTheme.buttonBackground.color,
             paddingVertical: 10,
             paddingHorizontal: 25,
-            borderRadius: 4
+            borderRadius: 4,
         },
         buttonContainer: {
             backgroundColor: "gray",
@@ -96,13 +101,13 @@ export default function SettingsPage({ navigation, route }) {
             onPress(id);
         };
         return (
-          <Pressable
+          <TouchableHighlight
             style={isSelected ? styles.buttonContainerSelected : styles.buttonContainer}
             onPress={handleOnButtonPress}>
             <Text style={isSelected ? styles.buttonTextSelected : styles.buttonText}>
               {title}
             </Text>
-          </Pressable>
+          </TouchableHighlight>
         );
     };
       
@@ -128,7 +133,7 @@ export default function SettingsPage({ navigation, route }) {
           <View style={styles.headerContainer}>
             <Text style={styles.heading}>Settings</Text>
           </View>
-          <View style={styles.headerContainer}>
+          <View style={[styles.headerContainer, {borderBottomWidth: 0, marginBottom: 5}]}>
             <Text style={styles.heading}>Themes</Text>
           </View>
           
@@ -144,13 +149,13 @@ export default function SettingsPage({ navigation, route }) {
                 />
               ))}
 
-              <Pressable
-                  style={styles.buttonContainerSelected}
+              <TouchableHighlight
+                  style={[styles.buttonContainerSelected, {marginTop: 15}]}
                   onPress={handleOnSaveChangesButtonPress}>
                   <Text style={styles.buttonTextSelected}>
                   Save Changes
                   </Text>
-              </Pressable>
+              </TouchableHighlight>
             </View>
           </View>
         </View>

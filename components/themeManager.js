@@ -211,7 +211,7 @@ const uglyOgre = StyleSheet.create(
             color: "white"
         },
         winnerText: {
-            color: "black"
+            color: "green"
         },
         squareOccupied: {
             color: "black"
