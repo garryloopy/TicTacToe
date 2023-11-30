@@ -108,7 +108,7 @@ export default function AboutPage({ navigation }) {
       return (
         <View style={styles.container}>
           <View style={styles.headerContainer}>
-            <Text style={styles.heading}>About us</Text>
+            <Text style={styles.heading}>About</Text>
           </View>
 
           <View style={[styles.bodyContainer, {marginBottom: "auto", gap: 20}]}>
@@ -120,6 +120,16 @@ export default function AboutPage({ navigation }) {
                     <Text style={styles.text}>Garry Jr Dayag</Text>
                     <Text style={styles.text}>Nicholas Gonzales</Text>
                     <Text style={styles.text}>Bryan Zhou</Text>
+                </View>
+            </View>
+
+            <View>
+                <View style={[styles.headerContainer, {marginTop: 10, marginBottom: 0, borderBottomWidth: 0}]}>
+                    <Text style={[styles.heading, {fontSize: 20}]}>Songs used:</Text>
+                </View>
+                <View style={{paddingBottom: 15}}>
+                    <Text style={styles.text}>Moonlight by Scott Buckley</Text>
+                    <Text style={styles.text}>Autumn Waltz by Oleksii_Kalyna</Text>
                 </View>
             </View>
 
