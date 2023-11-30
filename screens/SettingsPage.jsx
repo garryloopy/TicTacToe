@@ -229,7 +229,7 @@ export default function SettingsPage({ navigation }) {
             )}
             keyExtractor={(item) => item}
             stickyHeaderIndices={[0]}
-            ListHeaderComponent={<Text style={styles.heading}>{selectedNavBar === "THEMES" ? "Themes" : "Sounds"}</Text>}
+            ListHeaderComponent={<Text style={styles.heading}>{selectedNavBar === "THEMES" ? "Themes" : "Sounds - Background"}</Text>}
             ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
           />
 
