@@ -26,31 +26,38 @@ var moonlight = createNewSound("moonlight.mp3");
 const sounds = {
     0 : {
         sound: autumnWaltz,
-        name: "Autumn Waltz"
+        name: "Autumn Waltz",
+        author: "Scott Buckley"
     },
     1 : {
         sound: moonlight,
-        name: "Moonlight"
+        name: "Moonlight",
+        author: "Oleksii_Kalyna"
     },
     2 : {
         sound: moonlight,
-        name: "Moonlight"
+        name: "Place holder",
+        author: "Barack Obama"
     },
     3 : {
         sound: moonlight,
-        name: "Moonlight"
+        name: "Place holder",
+        author: "Barack Obama"
     },
     4 : {
         sound: moonlight,
-        name: "Moonlight"
+        name: "Place holder",
+        author: "Barack Obama"
     },
     5 : {
         sound: moonlight,
-        name: "Moonlight"
+        name: "Place holder",
+        author: "Barack Obama"
     },
     6 : {
         sound: moonlight,
-        name: "Moonlight"
+        name: "Place holder",
+        author: "Barack Obama"
     }
 }
 
@@ -96,11 +103,11 @@ export function stopAllSounds() {
  * @param {Number} soundId The sound id to be played
  */
 export function playSoundById(soundId) {
-    console.log("Playing sound with id: ", soundId)
+    console.log("Playing sound", sounds[soundId].name , "with id:", soundId)
     sounds[soundId].sound.play(
         (success) => {
             if (success) {
-                console.log("Successfully finished playing sound with id: ", soundId)
+                console.log("Successfully finished playing sound with id:", soundId)
             } else {
                 console.log("Playback failed")
             }

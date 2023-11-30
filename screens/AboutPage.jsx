@@ -20,7 +20,7 @@ import { playSoundById, stopAllSounds } from "../components/soundManager";
 
 export default function AboutPage({ navigation }) {
 
-    const { themeId } = useConfigContext();
+    const { themeId, availableSounds } = useConfigContext();
 
     // Represents current theme
     const [currentTheme, setCurrentTheme] = useState(getThemeById(themeId).theme);
@@ -128,8 +128,19 @@ export default function AboutPage({ navigation }) {
                     <Text style={[styles.heading, {fontSize: 20}]}>Songs used:</Text>
                 </View>
                 <View style={{paddingBottom: 15}}>
-                    <Text style={styles.text}>Moonlight by Scott Buckley</Text>
+                    {
+                        Object.keys(availableSounds).map((soundId) => (
+                            <Text style={styles.text} key={soundId}>{availableSounds[soundId].name} by {availableSounds[soundId].author}</Text>
+                        ))
+                    }
+                    {/* <Text style={styles.text}>Moonlight by Scott Buckley</Text>
                     <Text style={styles.text}>Autumn Waltz by Oleksii_Kalyna</Text>
+                    <Text style={styles.text}>Place holder</Text>
+                    <Text style={styles.text}>Place holder</Text>
+                    <Text style={styles.text}>Place holder</Text>
+                    <Text style={styles.text}>Place holder</Text>
+                    <Text style={styles.text}>Place holder</Text>
+                    <Text style={styles.text}>Place holder</Text> */}
                 </View>
             </View>
 
