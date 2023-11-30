@@ -1,7 +1,7 @@
 import HomePage from "./screens/HomePage";
 import SettingsPage from "./screens/SettingsPage";
 import GamePage from "./screens/GamePage";
-import TestPage from "./screens/TestPage";
+import AboutPage from "./screens/AboutPage";
 
 import { ConfigContextProvider } from "./_utils/context";
 
@@ -33,8 +33,9 @@ export default function App() {
           <Stack.Screen name="Game" 
                         component={GamePage} 
                         options={noHeader}/>
-          <Stack.Screen name="Test Page" 
-                        component={TestPage}/>
+          <Stack.Screen name="About" 
+                        component={AboutPage}
+                        options={noHeader}/>
         </Stack.Navigator>
       </NavigationContainer>
     </ConfigContextProvider>

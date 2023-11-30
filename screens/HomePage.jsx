@@ -5,11 +5,6 @@ import {
     TouchableHighlight
 } from "react-native";
 
-import {
-    useState,
-    useEffect
-} from "react";
-
 import { useConfigContext } from "../_utils/context";
 
 export default function HomePage( {navigation} ) {
@@ -108,15 +103,15 @@ export default function HomePage( {navigation} ) {
                         activeOpacity={0.9}
                         underlayColor="#DDDDDD"
                         style={[styles.buttonContainer, styles.shadow]}
-                        onPressOut={() => navigation.navigate("Settings", {prevThemeId : themeId})}>
+                        onPressOut={() => navigation.navigate("Settings")}>
                         <Text style={styles.buttonText}>Settings</Text>
                     </TouchableHighlight>
                     <TouchableHighlight
                         activeOpacity={0.9}
                         underlayColor="#DDDDDD"
                         style={[styles.buttonContainer, styles.shadow]}
-                        onPressOut={() => navigation.navigate("Test Page")}>
-                        <Text style={styles.buttonText}>Test Page</Text>
+                        onPressOut={() => navigation.navigate("About")}>
+                        <Text style={styles.buttonText}>About Us</Text>
                     </TouchableHighlight>
             </View>
         </View>

@@ -32,6 +32,26 @@ const sounds = {
         sound: moonlight,
         name: "Moonlight"
     },
+    2 : {
+        sound: moonlight,
+        name: "Moonlight"
+    },
+    3 : {
+        sound: moonlight,
+        name: "Moonlight"
+    },
+    4 : {
+        sound: moonlight,
+        name: "Moonlight"
+    },
+    5 : {
+        sound: moonlight,
+        name: "Moonlight"
+    },
+    6 : {
+        sound: moonlight,
+        name: "Moonlight"
+    }
 }
 
 

@@ -161,7 +161,7 @@ export default function SettingsPage({ navigation }) {
           navBarContainer: {
             backgroundColor: "gray", 
             width: "100%", 
-            height: 40, 
+            height: 48, 
             flexDirection: "row", 
             justifyContent:"space-evenly", 
             gap: 6, 
@@ -171,12 +171,14 @@ export default function SettingsPage({ navigation }) {
           },
             navBarButtonContainer: {
               backgroundColor: "white", 
-              paddingVertical: 5,
+              paddingVertical: 7,
               paddingHorizontal: 60,
               borderRadius: 4
           },
           navBarButtonText: {
-            textAlign: "center"
+            textAlign: "center",
+            fontSize: 15,
+            fontWeight: "500"
           },
           navBarButtonContainerSelected:{
             backgroundColor: currentTheme.buttonBackground.color
@@ -198,7 +200,7 @@ export default function SettingsPage({ navigation }) {
             <Text style={styles.heading}>Settings</Text>
           </View>
 
-          <View style={navBar.navBarContainer}>
+          <View style={[navBar.navBarContainer, {marginBottom: "auto"}]}>
             <TouchableHighlight 
               style={[navBar.navBarButtonContainer, selectedNavBar === "THEMES" ? navBar.navBarButtonContainerSelected : {opacity: 0.7}, styles.shadow]}
               activeOpacity={0.9}
@@ -214,45 +216,47 @@ export default function SettingsPage({ navigation }) {
               <Text style={[navBar.navBarButtonText, selectedNavBar === "SOUNDS" ? navBar.navBarButtonTextSelected : {opacity: 0.7}]}>Sounds</Text>
             </TouchableHighlight>
           </View>
-          <View style={styles.bodyContainer}>
 
-          <FlatList
-            data={selectedNavBar === "THEMES" ? Object.keys(availableThemes) : Object.keys(availableSounds)}
-            renderItem={({ item }) => (
-              <OptionsButton
-                title={selectedNavBar === "THEMES" ? availableThemes[item].name : availableSounds[item].name}
-                onPress={handleOnButtonPress}
-                id={item}
-                key={item}
-                isSelected={selectedNavBar === "THEMES" ? item == themeId : item == soundId }
-              />
-            )}
-            keyExtractor={(item) => item}
-            stickyHeaderIndices={[0]}
-            ListHeaderComponent={<Text style={styles.heading}>{selectedNavBar === "THEMES" ? "Themes" : "Sounds - Background"}</Text>}
-            ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
-          />
+          <View style={[styles.bodyContainer, {marginBottom: "auto"}]}>
+            <FlatList
+              data={selectedNavBar === "THEMES" ? Object.keys(availableThemes) : Object.keys(availableSounds)}
+              renderItem={({ item }) => (
+                <OptionsButton
+                  title={selectedNavBar === "THEMES" ? availableThemes[item].name : availableSounds[item].name}
+                  onPress={handleOnButtonPress}
+                  id={item}
+                  key={item}
+                  isSelected={selectedNavBar === "THEMES" ? item == themeId : item == soundId }
+                />
+              )}
+              keyExtractor={(item) => item}
+              stickyHeaderIndices={[0]}
+              ListHeaderComponent={<Text style={styles.heading}>{selectedNavBar === "THEMES" ? "Themes" : "Sounds - Background"}</Text>}
+              ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+            />
 
-          {selectedNavBar === "SOUNDS" &&
-            <TouchableHighlight
-                  activeOpacity={0.9}
-                  underlayColor="#DDDDDD"
-                  style={[soundId === -1 ? styles.buttonContainerSelected : styles.buttonContainer, {marginTop: 10}, styles.shadow]}
-                  onPressOut={handleOnNonePress}>
-                  <Text style={soundId === -1 ? styles.buttonTextSelected : styles.buttonText}>
-                  None
-                  </Text>
-              </TouchableHighlight>
-          }
+              {selectedNavBar === "SOUNDS" &&
+                <TouchableHighlight
+                      activeOpacity={0.9}
+                      underlayColor="#DDDDDD"
+                      style={[soundId === -1 ? styles.buttonContainerSelected : styles.buttonContainer, {marginTop: 10}, styles.shadow]}
+                      onPressOut={handleOnNonePress}>
+                      <Text style={soundId === -1 ? styles.buttonTextSelected : styles.buttonText}>
+                      None
+                      </Text>
+                  </TouchableHighlight>
+              }
+          </View>
 
-            <TouchableHighlight
-                  activeOpacity={0.9}
-                  underlayColor="#DDDDDD"
-                  style={[styles.buttonContainerSelected, {marginTop: 15}, styles.shadow]}
-                  onPress={handleOnSaveChangesButtonPress}>
-                  <Text style={styles.buttonTextSelected}>
-                  Save Changes
-                  </Text>
+          <View style={{width: "100%", marginTop: "auto"}}>
+              <TouchableHighlight
+                    activeOpacity={0.9}
+                    underlayColor="#DDDDDD"
+                    style={[styles.buttonContainerSelected, {marginTop: 15}, styles.shadow]}
+                    onPress={handleOnSaveChangesButtonPress}>
+                    <Text style={styles.buttonTextSelected}>
+                    Save Changes
+                    </Text>
               </TouchableHighlight>
           </View>
         </View>
