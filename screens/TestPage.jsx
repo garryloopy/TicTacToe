@@ -4,21 +4,23 @@ import {
     Button
 } from "react-native";
 
-import {
-    useState,
-    useEffect
-} from "react";
-
-import { useConfigContext } from "../_utils/context";
+import { playSoundById, stopAllSounds } from "../components/soundManager";
 
 
 export default function TestPage() {
-    const { themeId, setThemeId, soundId, setSoundId, currentTheme, setCurrentTheme } = useConfigContext();
+    const handleDebugButton = () => {
+        playSoundById(0);
+    }
+    const handleDebugButton2 = () => {
+        stopAllSounds();
+    }
 
     return (
         <View>
-            <Text>Test page</Text>
-            <Button title="Debug"/>
+            <Text>Play sound id 1</Text>
+            <Button title="Play" onPress={handleDebugButton}/>
+            <Text>Stop all sound</Text>
+            <Button title="Stop" onPress={handleDebugButton2}/>
         </View>
     )
 }

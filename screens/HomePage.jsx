@@ -13,7 +13,7 @@ import {
 import { useConfigContext } from "../_utils/context";
 
 export default function HomePage( {navigation} ) {
-    // Represents the theme id that was passed from the previous page, otherwise default to theme id of 0
+    // Represents the theme id, current theme, and single play functionality
     const { themeId, currentTheme, setSinglePlay } = useConfigContext();
 
       /**

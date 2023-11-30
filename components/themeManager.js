@@ -545,6 +545,7 @@ const themes = {
         theme: noir,
         name: "Noir"
     }
+    ,
 }
 
 
