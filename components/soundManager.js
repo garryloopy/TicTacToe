@@ -3,25 +3,25 @@ import Sound from "react-native-sound";
 // Enable playback in silence mode
 Sound.setCategory('Playback');
 
+
 const createNewSound = (fileName) => {
     var newSound = new Sound(fileName, Sound.MAIN_BUNDLE, (error) => {
         if (error) {
-          console.log("Failed to load the sound", error);
+          console.log("Failed to load the sound",fileName, ". ERROR:", error);
           return;
         }
-        // loaded successfully
-        console.log("Successfully loaded: ", fileName)
-        console.log("Duration in seconds: " + newSound.getDuration() + "s");
-        console.log("\n")
     });
 
-    //Loop indefinitely
-    newSound.setNumberOfLoops(-1);
     return newSound;
 }
 
 var autumnWaltz = createNewSound("autumn_waltz.mp3");
 var moonlight = createNewSound("moonlight.mp3");
+var melancholic = createNewSound("melancholic.mp3");
+var epicHollywoodTrailer = createNewSound("epic_hollywood_trailer.mp3");
+var spookyPiano = createNewSound("spooky_piano.mp3");
+var clairDeLune = createNewSound("clair_de_lune_claude_debussy_moonlight.mp3");
+var lullaby = createNewSound("brahmsx27_lullaby.mp3");
 
 const sounds = {
     0 : {
@@ -32,32 +32,32 @@ const sounds = {
     1 : {
         sound: moonlight,
         name: "Moonlight",
-        author: "Oleksii_Kalyna"
+        author: "Oleksii Kalyna"
     },
     2 : {
-        sound: moonlight,
-        name: "Place holder",
-        author: "Barack Obama"
+        sound: melancholic,
+        name: "Melancholic",
+        author: "Oleg Kyrylkovv"
     },
     3 : {
-        sound: moonlight,
-        name: "Place holder",
-        author: "Barack Obama"
+        sound: epicHollywoodTrailer,
+        name: "Epic Hollywood Trailer",
+        author: "Zakhar Valaha"
     },
     4 : {
-        sound: moonlight,
-        name: "Place holder",
-        author: "Barack Obama"
+        sound: spookyPiano,
+        name: "Spooky Piano",
+        author: "Dmitry Taras"
     },
     5 : {
-        sound: moonlight,
-        name: "Place holder",
-        author: "Barack Obama"
+        sound: clairDeLune,
+        name: "Claire De Lune Moonlight",
+        author: "Jerome Chauvel"
     },
     6 : {
-        sound: moonlight,
-        name: "Place holder",
-        author: "Barack Obama"
+        sound: lullaby,
+        name: "Lullaby",
+        author: "Jerome Chauvel"
     }
 }
 
@@ -94,23 +94,20 @@ export function stopAllSounds() {
             sounds[soundId].sound.stop();
         }
     )
-
-    console.log("Stopped all sounds");
 }
 
 /**
  * Plays the corresponding sound with the given sound id
  * @param {Number} soundId The sound id to be played
  */
-export function playSoundById(soundId) {
-    console.log("Playing sound", sounds[soundId].name , "with id:", soundId)
-    sounds[soundId].sound.play(
+export async function playSoundById(soundId) {
+    await sounds[soundId].sound.play(
         (success) => {
-            if (success) {
-                console.log("Successfully finished playing sound with id:", soundId)
-            } else {
-                console.log("Playback failed")
-            }
+            if (!success) 
+                console.log("Playback failed:", sounds[soundId].name, "with id:", soundId);
+            else   
+                // Play again
+                playSoundById(soundId);
         }
     );
 }
@@ -120,5 +117,5 @@ export function playSoundById(soundId) {
  * @param {Number} soundId The sound id used to stop playing
  */
 export function stopSound(soundId) {
-    sounds[soundId].stop();
+    sounds[soundId].sound.stop();
 }

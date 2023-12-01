@@ -9,11 +9,6 @@ import {
 import { useConfigContext } from "../_utils/context";
 
 import {
-    getThemeById,
-    getAllThemes
-} from "../components/themeManager"
-
-import {
     useState,
     useEffect
 } from "react";
@@ -27,11 +22,11 @@ export default function SettingsPage({ navigation }) {
     const { themeId, setThemeId, soundId, setSoundId, availableThemes, availableSounds, setAvailableSounds, currentSound, setCurrentSound } = useConfigContext();
 
     // Represents current theme
-    const [currentTheme, setCurrentTheme] = useState(getThemeById(themeId).theme);
+    const [currentTheme, setCurrentTheme] = useState(availableThemes[themeId].theme);
     
     // Change current theme each the current theme id changes
     useEffect(() => {
-      setCurrentTheme(getThemeById(themeId).theme);
+      setCurrentTheme(availableThemes[themeId].theme);
     }, [themeId]);
 
     // Represents overall styling for the page

@@ -12,7 +12,8 @@ export default function Square( {id, contents, onPress, style, currentTheme } ) 
         padding: 30,
       },
       squarePressed: {
-        backgroundColor: currentTheme.squarePressed.color
+        backgroundColor: currentTheme.squarePressed.color,
+        opacity: 0.8
       },
       occupied: {
         textAlign: "center",
