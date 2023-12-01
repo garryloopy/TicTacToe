@@ -37,6 +37,7 @@ export default function Game( {singlePlay, theme} ) {
             },
             winner: {
                 fontWeight: "500",
+                fontFamily: "monospace",
                 fontSize: 20,
                 color: theme.winnerText.color
             },
@@ -45,17 +46,20 @@ export default function Game( {singlePlay, theme} ) {
             },
             textCurrent: {
                 fontSize: 20,
-                fontWeight: '700',
+                fontFamily: "monospace",
+                fontWeight: '800',
                 color: theme.textHeader.color,
             },
             textTurn: {
                 fontSize: 15,
+                fontFamily: "monospace",
                 fontWeight: "800",
                 color: theme.infoBoxSubHeader.color,
                 textAlign: "center",
             },
             textWins: {
                 fontSize: 20,
+                fontFamily: "monospace",
                 fontWeight: "800",
                 color: theme.infoBoxHeader.color,
                 borderBottomWidth: 0.9,
@@ -87,7 +91,8 @@ export default function Game( {singlePlay, theme} ) {
                 textAlign: 'center',
                 padding: 10,
                 fontSize: 15,
-                fontWeight: "500"
+                fontFamily: "monospace",
+                fontWeight: "700"
             },
             shadow: {
                 shadowColor: '#000',

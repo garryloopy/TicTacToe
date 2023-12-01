@@ -45,6 +45,7 @@ export default function AboutPage({ navigation }) {
           fontWeight: "bold",
           color: currentTheme.homeHeader.color,
           textAlign: "center",
+          fontFamily: "monospace",
           paddingBottom: 1
       },
       headerContainer: {
@@ -62,8 +63,9 @@ export default function AboutPage({ navigation }) {
         buttonTextSelected: {
             color: currentTheme.buttonText.color,
             textAlign: "center",
-            fontSize: 15,
-            fontWeight: "500"
+            fontFamily: "monospace",
+            fontSize: 20,
+            fontWeight: "900"
         },
         buttonContainerSelected: {
             backgroundColor: currentTheme.buttonBackground.color,
@@ -95,6 +97,7 @@ export default function AboutPage({ navigation }) {
             color: currentTheme.homeHeader.color,
             textAlign: "center",
             fontSize: 15,
+            fontFamily: "monospace",
             fontWeight: "500",
             opacity: 0.9
         }

@@ -55,6 +55,9 @@ const blackAndWhite = StyleSheet.create(
         },
         squarePressed: {
             color: "#f5f5dc"
+        },
+        XOtheme: {
+            color: "black"
         }
     }
 );
@@ -109,7 +112,11 @@ const inverseBlackAndWhite = StyleSheet.create(
         },
         squarePressed: {
             color: "grey"
+        },
+        XOtheme: {
+            color: "white"
         }
+        
     }
 );
 
@@ -218,6 +225,9 @@ const uglyOgre = StyleSheet.create(
         },
         squarePressed: {
             color: "#f5f5dc"
+        },
+        XOtheme: {
+            color: "green"
         }
     }
 );
@@ -273,6 +283,9 @@ const bumblebee = StyleSheet.create(
         },
         squarePressed: {
             color: "#f5f5dc"
+        },
+        XOtheme: {
+            color: "black"
         }
     }
 );
@@ -327,6 +340,9 @@ const oceanic = StyleSheet.create(
         },
         squarePressed: {
             color: "#f5f5dc"
+        },
+        XOtheme: {
+            color: "#00FFFF"
         }
     }
 );
@@ -381,6 +397,9 @@ const royal = StyleSheet.create(
         },
         squarePressed: {
             color: "#f5f5dc"
+        },
+        XOtheme: {
+            color: "#500050"
         }
 
     }
@@ -437,6 +456,9 @@ const bloodMoon = StyleSheet.create(
         },
         squarePressed: {
             color: "#f5f5dc"
+        },
+        XOtheme: {
+            color: "#FF0000"
         }
     }
 );
@@ -491,6 +513,9 @@ const noir = StyleSheet.create(
         },
         squarePressed: {
             color: "#f5f5dc"
+        },
+        XOtheme: {
+            color: "white"
         }
     }
 );

@@ -24,8 +24,9 @@ export default function HomePage( {navigation} ) {
             backgroundColor: currentTheme.backgroundColor.color
         },
         heading: {
-            fontSize: 25,
-            fontWeight: "bold",
+            fontSize: 32,
+            fontWeight: "700",
+            fontFamily: "monospace",
             marginBottom: 20,
             color: currentTheme.homeHeader.color,
             textAlign: "center",
@@ -39,8 +40,9 @@ export default function HomePage( {navigation} ) {
         buttonText: {
             color: currentTheme.buttonText.color,
             textAlign: "center",
+            fontFamily: "monospace",
             fontSize: 15,
-            fontWeight: "500"
+            fontWeight: "700"
         },
         buttonContainer: {
             backgroundColor: currentTheme.buttonBackground.color,

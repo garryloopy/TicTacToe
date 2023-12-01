@@ -9,7 +9,7 @@ export default function Square( {id, contents, onPress, style, currentTheme } ) 
     {
       square: {
         flex: 1,
-        padding: 30,
+        padding: 15,
       },
       squarePressed: {
         backgroundColor: currentTheme.squarePressed.color,
@@ -17,10 +17,10 @@ export default function Square( {id, contents, onPress, style, currentTheme } ) 
       },
       occupied: {
         textAlign: "center",
-        fontSize: 40,
-
-        fontWeight: "900",
-        color: currentTheme.squareOccupied.color
+        fontSize: 60,
+        color: currentTheme.XOtheme.color,
+        fontWeight: "300",
+        
       },
       
     }

@@ -62,6 +62,7 @@ export default function GamePage( {navigation} ) {
                 color: currentTheme.textHeader.color,
                 textAlign: "center",
                 marginBottom: 20,
+                fontFamily: "monospace",
                 fontSize: 20,
                 fontWeight: "600"
             }
@@ -73,16 +74,11 @@ export default function GamePage( {navigation} ) {
      */
     const styles = StyleSheet.create(
         {
-            textHeading: {
-                textAlign: "center",
-                marginBottom: 10,
-                fontSize: 25,
-                fontWeight: "bold",
-                color: currentTheme.textHeader.color
-            },
+            
             heading: {
                 fontSize: 25,
-                fontWeight: "bold",
+                fontWeight: "900",
+                fontFamily: "monospace",
                 color: currentTheme.homeHeader.color,
                 textAlign: "center",
                 paddingBottom: 1
@@ -112,7 +108,8 @@ export default function GamePage( {navigation} ) {
                 textAlign: "center",
                 color: currentTheme.buttonText.color,
                 fontSize: 15,
-                fontWeight: "500"
+                fontFamily: "monospace",
+                fontWeight: "800"
             },
             shadow: {
                 shadowColor: '#000',

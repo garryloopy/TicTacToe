@@ -42,6 +42,7 @@ export default function SettingsPage({ navigation }) {
         heading: {
           fontSize: 25,
           fontWeight: "bold",
+          fontFamily: "monospace",
           color: currentTheme.homeHeader.color,
           textAlign: "center",
           paddingBottom: 1
@@ -56,13 +57,15 @@ export default function SettingsPage({ navigation }) {
             color: "white",
             textAlign: "center",
             fontSize: 15,
-            fontWeight: "500"
+            fontWeight: "700",
+            fontFamily: "monospace",
         },
         buttonTextSelected: {
             color: currentTheme.buttonText.color,
             textAlign: "center",
             fontSize: 15,
-            fontWeight: "500"
+            fontWeight: "900",
+            fontFamily: "monospace",
         },
         buttonContainerSelected: {
             backgroundColor: currentTheme.buttonBackground.color,
@@ -173,7 +176,8 @@ export default function SettingsPage({ navigation }) {
           navBarButtonText: {
             textAlign: "center",
             fontSize: 15,
-            fontWeight: "500"
+            fontWeight: "900",
+            fontFamily: "monospace"
           },
           navBarButtonContainerSelected:{
             backgroundColor: currentTheme.buttonBackground.color
