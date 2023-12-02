@@ -15,6 +15,11 @@ import {
 
 import { playSoundById, stopAllSounds } from "../components/soundManager";
 
+/**
+ * Represents the settings page
+ * @param {*} navigation Represents the navigation used
+ * @returns The settings page component
+ */
 export default function SettingsPage({ navigation }) {
     // Used to represent the state of which nav bar option is selected
     const [selectedNavBar, setSelectedNavBar] = useState("THEMES");
@@ -150,10 +155,15 @@ export default function SettingsPage({ navigation }) {
         navigation.navigate("Home", { themeId: themeId });
       }
 
+      /**
+       * Handler for pressing the navbar
+       * @param {String} value The value for the navbar that was pressed. Either "THEMES" OR "SOUNDS"
+       */
       const handleOnNavButtonPress = (value) => {
         setSelectedNavBar(value);
       }
 
+      // Represents overall styling for navbar
       const navBar = StyleSheet.create(
         {
           navBarContainer: {
@@ -188,8 +198,14 @@ export default function SettingsPage({ navigation }) {
         }
       )
 
+      /**
+       * Handler for pressing none
+       */
       const handleOnNonePress = () => {
+        // Set sound id to -1. 
         setSoundId(-1);
+
+        // Stops all sound
         stopAllSounds();
       }
     

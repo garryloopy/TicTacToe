@@ -18,8 +18,13 @@ import {
 
 import { playSoundById, stopAllSounds } from "../components/soundManager";
 
+/**
+ * Represents the about page
+ * @param {*} navigation Represents the navigation used
+ * @returns The about page component
+ */
 export default function AboutPage({ navigation }) {
-
+    // Theme id
     const { themeId, availableSounds } = useConfigContext();
 
     // Represents current theme
@@ -136,14 +141,6 @@ export default function AboutPage({ navigation }) {
                             <Text style={styles.text} key={soundId}>{availableSounds[soundId].name} by {availableSounds[soundId].author}</Text>
                         ))
                     }
-                    {/* <Text style={styles.text}>Moonlight by Scott Buckley</Text>
-                    <Text style={styles.text}>Autumn Waltz by Oleksii_Kalyna</Text>
-                    <Text style={styles.text}>Place holder</Text>
-                    <Text style={styles.text}>Place holder</Text>
-                    <Text style={styles.text}>Place holder</Text>
-                    <Text style={styles.text}>Place holder</Text>
-                    <Text style={styles.text}>Place holder</Text>
-                    <Text style={styles.text}>Place holder</Text> */}
                 </View>
             </View>
 

@@ -17,6 +17,9 @@ import Square from "./square";
 
 export default function Board({ positions, onSquarePress, theme}) {
 
+  /**
+   * Represents overall styling of the page
+   */
   const styles = StyleSheet.create({
     board: {
       marginTop: 10,

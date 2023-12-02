@@ -12,6 +12,9 @@ import {
 
 import Board from "./board";
 
+/**
+ * Represents starting position; empty board
+ */
 const starterPositions = {
     x0y0 : "",
     x1y0 : "",
@@ -24,12 +27,24 @@ const starterPositions = {
     x2y2 : "",
   }
 
+/**
+ * Represents starting wins; empty wins
+ */
 const starterWins = {
     X: 0,
     O: 0,
 }
 
+/**
+ * Represents a game component with logic that handles tie, wins, and loses. The game component allows placements in squares, and allows for restarts.
+ * @param {Boolean} singlePlay True to allow single play, false to allow duo play. True allows the user to play with a computer
+ * @param {Object} theme The theme to use within the app. Please see themeManager.js for the theme specifications
+ * @returns The game component
+ */
 export default function Game( {singlePlay, theme} ) {
+    /**
+     * Represents overall styling of the page
+     */
     const styles = StyleSheet.create(
         {
             center: {
@@ -256,8 +271,6 @@ export default function Game( {singlePlay, theme} ) {
       // Change current turn
       changeTurn();
     }
-
-
 
     return (
         <View>

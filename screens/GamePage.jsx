@@ -16,8 +16,13 @@ import { getThemeById } from "../components/themeManager";
 
 import { useConfigContext } from "../_utils/context";
  
-
+/**
+ * Represents the game page
+ * @param {*} navigation Represents the navigation type used
+ * @returns The game page component
+ */
 export default function GamePage( {navigation} ) {
+    // Config settings
     const { themeId, currentTheme, setCurrentTheme, singlePlay } = useConfigContext();
     
     // Change current theme each the current theme id changes
@@ -145,10 +150,12 @@ export default function GamePage( {navigation} ) {
         setModalVisible(false);
     }
 
+    /**
+     * Goes to home, passing current theme id if needed
+     */
     const navigateToHome = () => {
         navigation.navigate("Home", { themeId: themeId });
     }
-
 
 
     return (

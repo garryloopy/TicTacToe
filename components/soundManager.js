@@ -1,9 +1,19 @@
 import Sound from "react-native-sound"; 
 
+// TO ADD A NEW SOUND:
+// PLEASE PLACE THE SOUND FILE INTO THE PATH: .\TicTacToe\android\app\src\main\res\raw\
+// AND THEN CREATE A REFERENCE TO THE NEW SOUND
+// FINALLY, ADD A NEW PORTION OF THE REFERENCE INTO THE SOUNDS VARIABLE WITH A UNIQUE ID. 
+
 // Enable playback in silence mode
 Sound.setCategory('Playback');
 
 
+/**
+ * Creates a new sound object via given file path
+ * @param {String} fileName The file path for the sound
+ * @returns The new Sound object
+ */
 const createNewSound = (fileName) => {
     var newSound = new Sound(fileName, Sound.MAIN_BUNDLE, (error) => {
         if (error) {
@@ -15,6 +25,7 @@ const createNewSound = (fileName) => {
     return newSound;
 }
 
+// Sounds
 var autumnWaltz = createNewSound("autumn_waltz.mp3");
 var moonlight = createNewSound("moonlight.mp3");
 var melancholic = createNewSound("melancholic.mp3");
@@ -23,6 +34,9 @@ var spookyPiano = createNewSound("spooky_piano.mp3");
 var clairDeLune = createNewSound("clair_de_lune_claude_debussy_moonlight.mp3");
 var lullaby = createNewSound("brahmsx27_lullaby.mp3");
 
+/**
+ * Represents the sounds that is found within the system. Similar to adding theme. For more info, refer to the specifications of adding a new theme in the themeManager.js
+ */
 const sounds = {
     0 : {
         sound: autumnWaltz,

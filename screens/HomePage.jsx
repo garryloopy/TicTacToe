@@ -7,6 +7,11 @@ import {
 
 import { useConfigContext } from "../_utils/context";
 
+/**
+ * Represents the home page 
+ * @param {*} navigation Represents the navigation used
+ * @returns The home page component
+ */
 export default function HomePage( {navigation} ) {
     // Represents the theme id, current theme, and single play functionality
     const { themeId, currentTheme, setSinglePlay } = useConfigContext();
