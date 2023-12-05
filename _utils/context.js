@@ -42,6 +42,7 @@ export const ConfigContextProvider = ({children}) => {
             setCurrentSound(getSoundById(soundId));
         }, [soundId]
     )
+    // TEST
 
     return (
         <ConfigContext.Provider value={
